@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
 app.post('/similarity', function (req, res) {
   console.log("Receive request");
   console.log(req.body);
-  var word = req.body.value.toLowerCase();
+  var word = req.body.value.trim().toLowerCase();
   var score = model.similarity(word,'dictionnaire');
   console.log(score);
   res.status(200).json({
