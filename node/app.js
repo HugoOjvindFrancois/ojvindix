@@ -6,6 +6,9 @@ const port = 3001;
 var w2v = require('word2vec');
 var model;
 
+var currentWord = 'dictionnaire';
+var lastWord = 'transpiration';
+
 w2v.loadModel('./model.bin', function( error, modelLoaded ) {
   model = modelLoaded;
   console.log("Model loaded");
@@ -22,15 +25,28 @@ app.get('/', (req, res) => {
   res.send('Welcome to Ojvindix')
 });
 
+app.get('/last', (req, res) => {
+  res.send({value: lastWord});
+});
+
+app.post('/new', (req, res) => {
+  console.log('New word');
+  console.log(req.body);
+  var newWord = req.body.trim().toLowerCase();
+  currentWord = newWord;
+  res.status(200).json({
+    value: newWord
+  });
+});
 
 app.post('/similarity', function (req, res) {
   console.log("Receive request");
   console.log(req.body);
   var word = req.body.value.trim().toLowerCase();
-  var score = model.similarity(word,'dictionnaire');
+  var score = model.similarity(word,currentWord);
   console.log(score);
   res.status(200).json({
-    message: score
+    value: score
   });
 });
 

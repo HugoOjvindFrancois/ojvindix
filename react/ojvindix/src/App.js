@@ -12,6 +12,7 @@ function App() {
 
   const [message, setMessage] = useState('');
   const [count, setCount] = useState(0);
+  const [lastWord, setLastWord] = useState(0);
 
   const handleChanges = event => {
     setMessage(event.target.value);
@@ -35,7 +36,7 @@ function App() {
       },
     }).then((response) => response.json()).then((data) => {
 
-      let score = data.message;
+      let score = data.value;
 
       if (score == 1) {
         win = true;
@@ -102,6 +103,20 @@ function App() {
     )
   }
 
+  useEffect(() => {
+    fetch('http://51.38.48.94:3001/last', {
+      method: 'GET', 
+      mode: 'cors',
+    }).then((response) => response.json()).then((data) => {
+
+      let word = data.value;
+      setLastWord(word);
+
+    }).catch((err) => {
+       console.log(err.message);
+    });
+  });
+
   return (
     <div className="App">
       <h1>Ojvindix</h1>
@@ -111,7 +126,8 @@ function App() {
             headers={["N°", "Mot", "Score"]}
             formElements={words}
           />
-      { win && (<img src={winGif} alt="funny GIF" width="100%" />)}
+      { win && (<img src={winGif} alt="win GIF" width="100%" />)}
+      <h5>Le mot d'hier était : {lastWord}</h5>
       <h6>Made with love by Ojvind</h6>
     </div>
   );
