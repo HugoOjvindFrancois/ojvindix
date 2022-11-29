@@ -2,4 +2,4 @@
 
 Homemade Cémantix
 
-http://51.38.48.94:3000/
+http://www.ojvindix.fr/

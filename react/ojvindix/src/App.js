@@ -123,13 +123,15 @@ function App() {
   return (
     <div className="App">
       <h1>Ojvindix</h1>
-      <input type="text" placeholder="Mot" onChange={handleChanges} onKeyDown={handleKeyDown} value={message}/>
-      <button onClick={sendWord}>Envoyer</button>
+      <div class="oj-c-MainInput">
+        <input type="text" placeholder="Mot" onChange={handleChanges} onKeyDown={handleKeyDown} value={message}/>
+        <button onClick={sendWord}>Envoyer</button>
+      </div>
       <TableFormList
             headers={["N°", "Mot", "Score"]}
             formElements={words}
           />
-      { win && (<img src={winGif} alt="win GIF" width="100%" />)}
+      { win && (<img src={winGif} alt="win GIF" width="100%" class="oj-c-WinGif" />)}
       <LastWordDisplay/>
       <h6>Made with love by Ojvind</h6>
     </div>
