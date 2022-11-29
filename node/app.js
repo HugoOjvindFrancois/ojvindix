@@ -15,7 +15,7 @@ w2v.loadModel('./model.bin', function( error, modelLoaded ) {
 });  
 
 let corsOptions = {
-  origin : ['http://localhost', 'http://51.38.48.94'],
+  origin : ['http://localhost', 'http://51.38.48.94', 'http://www.ojvindix.fr'],
 }
 
 app.use(express.json());
