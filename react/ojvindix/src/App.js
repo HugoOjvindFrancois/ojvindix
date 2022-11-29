@@ -61,7 +61,7 @@ function App() {
       words.push({
         number: count,
         value: message,
-        score: score
+        score: score,
       });
 
       setMessage("");
@@ -97,7 +97,7 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {sortedWord.map((item,index) => <tr key={index}><td>{item.number}</td><td>{item.value}</td><td>{(item.score * 100).toFixed(2)}</td></tr> )}
+          {sortedWord.map((item,index) => <tr key={index} className={item.score === 1 ? 'goodAnswer' : ''}><td>{item.number}</td><td>{item.value}</td><td>{(item.score * 100).toFixed(2)}</td></tr> )}
         </tbody>
       </table>
     )

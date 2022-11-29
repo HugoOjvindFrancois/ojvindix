@@ -183,6 +183,11 @@ table tbody > tr:last-of-type td:last-of-type {
   border: 1px solid #e0e0e0;
 }
 
+.goodAnswer > td {
+  background-color: rgb(77, 194, 77);
+  color: white;
+}
+
 @media (max-width: 767px) {
   .oj-c-MainInput,
   table {
