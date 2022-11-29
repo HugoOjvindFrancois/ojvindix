@@ -6,7 +6,7 @@ const port = 3001;
 var w2v = require('word2vec');
 var model;
 
-var currentWord = 'suicide';
+var currentWord = 'sauna';
 var lastWord = 'suicide';
 
 w2v.loadModel('./model.bin', function( error, modelLoaded ) {
@@ -15,7 +15,7 @@ w2v.loadModel('./model.bin', function( error, modelLoaded ) {
 });  
 
 let corsOptions = {
-  origin : ['http://localhost', 'http://51.38.48.94'],
+  origin : ['http://localhost', 'http://51.38.48.94', 'http://www.ojvindix.fr', 'http://www.ojvindix.fr:3000'],
 }
 
 app.use(express.json());
