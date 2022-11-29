@@ -1,5 +1,13 @@
 const express = require('express');
-const cors = require('cors')
+const cors = require('cors');
+const https = require('https');
+const fs = require('fs');
+
+const options = {
+  key: fs.readFileSync("./.cert/key.pem"),
+  cert: fs.readFileSync("./.cert/cert.pem")
+  }
+
 const app = express();
 const port = 3001;
 
@@ -15,7 +23,7 @@ w2v.loadModel('./model.bin', function( error, modelLoaded ) {
 });  
 
 let corsOptions = {
-  origin : ['http://localhost', 'http://51.38.48.94', 'http://www.ojvindix.fr', 'http://www.ojvindix.fr:3000'],
+  origin : ['http://localhost', 'http://51.38.48.94', 'https://www.ojvindix.fr', 'https://ojvindix.fr'],
 }
 
 app.use(express.json());
@@ -51,6 +59,8 @@ app.post('/similarity', function (req, res) {
   });
 });
 
-app.listen(port, () => {
+let server = https.createServer(options, app);
+
+server.listen(port, () => {
   console.log(`Ojvindix listening on port ${port}`)
 });

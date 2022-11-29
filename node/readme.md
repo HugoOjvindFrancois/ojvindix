@@ -8,3 +8,5 @@ Npm version -> 8.19.2
 `node app.js`
 
 If you want to change the model just remove the `model.bin`, download a new one and rename it `model.bin`
+
+The model come from this website [https://fauconnier.github.io/](https://fauconnier.github.io/)

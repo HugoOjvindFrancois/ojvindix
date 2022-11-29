@@ -18,6 +18,8 @@ function App() {
     setMessage(event.target.value);
   }
 
+
+
   function sendWord() {
 
     if (!message || message.trim() === '') {
@@ -25,7 +27,7 @@ function App() {
       return;
     }
 
-    fetch('http://51.38.48.94:3001/similarity', {
+    fetch('https://ojvindix.fr:3001/similarity', {
       method: 'POST', 
       mode: 'cors', 
       body: JSON.stringify({
@@ -104,19 +106,19 @@ function App() {
   }
 
   function LastWordDisplay() {
-    fetch('http://51.38.48.94:3001/last', {
+    fetch('https://ojvindix.fr:3001/last', {
       method: 'GET', 
       mode: 'cors',
     }).then((response) => response.json()).then((data) => {
-
+  
       let word = data.value;
       setLastWord(word);
-
+  
     }).catch((err) => {
        console.log(err.message);
     });
     return (
-      <h5>Le mot d'hier était : {lastWord}</h5>
+      <h5>Le mot précédent était : {lastWord}</h5>
     )
   }
 
