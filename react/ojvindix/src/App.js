@@ -43,7 +43,7 @@ function App() {
       }
 
       if (!score) {
-        alert("On ne connais pas ce mot, déso (ntm pop)");
+        //alert("On ne connais pas ce mot, déso (ntm pop)");
         return;
       }
 
@@ -103,7 +103,7 @@ function App() {
     )
   }
 
-  useEffect(() => {
+  function LastWordDisplay() {
     fetch('http://51.38.48.94:3001/last', {
       method: 'GET', 
       mode: 'cors',
@@ -115,7 +115,10 @@ function App() {
     }).catch((err) => {
        console.log(err.message);
     });
-  });
+    return (
+      <h5>Le mot d'hier était : {lastWord}</h5>
+    )
+  }
 
   return (
     <div className="App">
@@ -127,7 +130,7 @@ function App() {
             formElements={words}
           />
       { win && (<img src={winGif} alt="win GIF" width="100%" />)}
-      <h5>Le mot d'hier était : {lastWord}</h5>
+      <LastWordDisplay/>
       <h6>Made with love by Ojvind</h6>
     </div>
   );

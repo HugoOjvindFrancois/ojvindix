@@ -6,8 +6,8 @@ const port = 3001;
 var w2v = require('word2vec');
 var model;
 
-var currentWord = 'dictionnaire';
-var lastWord = 'transpiration';
+var currentWord = 'suicide';
+var lastWord = 'suicide';
 
 w2v.loadModel('./model.bin', function( error, modelLoaded ) {
   model = modelLoaded;
@@ -15,7 +15,7 @@ w2v.loadModel('./model.bin', function( error, modelLoaded ) {
 });  
 
 let corsOptions = {
-  origin : ['http://localhost:3000', 'http://51.38.48.94:3000'],
+  origin : ['http://localhost', 'http://51.38.48.94'],
 }
 
 app.use(express.json());
@@ -32,7 +32,8 @@ app.get('/last', (req, res) => {
 app.post('/new', (req, res) => {
   console.log('New word');
   console.log(req.body);
-  var newWord = req.body.trim().toLowerCase();
+  var newWord = req.body.value.trim().toLowerCase();
+  lastWord = currentWord;
   currentWord = newWord;
   res.status(200).json({
     value: newWord
@@ -51,5 +52,5 @@ app.post('/similarity', function (req, res) {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Ojvindix listening on port ${port}`)
 });

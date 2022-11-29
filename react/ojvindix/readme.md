@@ -1,5 +1,8 @@
 # Getting Started with Create React App
 
+Node version -> 16.18.1
+Npm version -> 8.19.2
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -68,3 +71,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+To start, you must be root
+
+`sudo -i`
+
+`cd /path/to/ojvindix`
+
+`chown -R root:root .`
+
+When finish you can revert the permission
+
+`chown -R <Your username>:<You username> .`
