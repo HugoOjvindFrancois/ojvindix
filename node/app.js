@@ -12,7 +12,7 @@ const options = {
 }
 
 const corsOptions = {
-  origin : ['http://localhost', 'http://51.38.48.94', 'https://www.ojvindix.fr', 'https://ojvindix.fr', 'https://ojvindix.fr:37389', 'https://www.ojvindix.fr:37389'],
+  origin : ['http://localhost', 'http://51.38.48.94', 'https://www.ojvindix.fr', 'https://ojvindix.fr', 'https://ojvindix.fr:3000', 'https://www.ojvindix.fr:3000'],
 }
 
 const port = 3001;
@@ -22,8 +22,8 @@ const server = https.createServer(options, app);
 
 var model;
 
-var currentWord = 'faucille';
-var lastWord = 'bonbon';
+var currentWord = 'pourcentage';
+var lastWord = 'faucille';
 
 var group = new Map();
 

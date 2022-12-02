@@ -38,6 +38,10 @@ function App() {
     console.log('Receive new word from multiplayer team');
     console.log(body);
 
+    if (body.score == 1) {
+      win = true;
+    }
+
     if (!body.value) {
       return;
     }
@@ -148,6 +152,7 @@ function App() {
             username: pseudo
           });
         }
+        // PORT=443 
 
         setMessage("");
 
@@ -219,10 +224,12 @@ function App() {
           />
       { win && (<img src={winGif} alt="win GIF" width="100%" className="oj-c-WinGif" />)}
       <LastWordDisplay/>
-      <input type="text" placeholder="Code" onChange={handleMultiplayerCodeChange} value={mutiplayerCode} disabled={isConnected} />
-      <input type="text" placeholder="Pseudo" onChange={handlePseudoChange} value={pseudo} />
-      { !isConnected && (<button onClick={connectMultiplayer}>Connect</button>) }
-      { isConnected && (<button onClick={disconnectMultiplayer}>Disconnect</button>) }
+      <div className="oj-c-MultiInput">
+        <input type="text" placeholder="Code" onChange={handleMultiplayerCodeChange} value={mutiplayerCode} disabled={isConnected} />
+        <input type="text" placeholder="Pseudo" onChange={handlePseudoChange} value={pseudo} />
+        { !isConnected && (<button onClick={connectMultiplayer}>Connect</button>) }
+        { isConnected && (<button onClick={disconnectMultiplayer}>Disconnect</button>) }
+      </div>
       <h6>Made with love by Ojvind</h6>
     </div>
   );

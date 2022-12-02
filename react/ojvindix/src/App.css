@@ -130,6 +130,50 @@ h1 {
   font-size: 16px;
 }
 
+.oj-c-MultiInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  margin: 0 auto !important;
+}
+
+.oj-c-MultiInput input {
+  font-family: 'Space Grotesk', sans-serif;
+  height: 25px;
+  appearance: none;
+  border: 0;
+  border-radius: 50px;
+  padding: 5px 10px;
+  width: 100%;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.oj-c-MultiInput button {
+  font-family: 'Space Grotesk', sans-serif;
+  height: 35px;
+  appearance: none;
+  border: 0;
+  border-radius: 50px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  background: rgb(27, 126, 207);
+  color: white;
+  font-weight: 500;
+  /*margin-left: 10px;*/
+  min-width: 110px;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+h5 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 h6 {
   font-size: 12px;
   font-weight: 700;
@@ -185,6 +229,7 @@ table tbody > tr:last-of-type td:last-of-type {
 
 .goodAnswer > td {
   background-color: rgb(77, 194, 77);
+  border-color: rgb(77, 194, 77);
   color: white;
 }
 
