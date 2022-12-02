@@ -1,9 +1,11 @@
 import logo from './logo.svg';
-import winGif from './win.gif';
-import doomSong from './doom.ogg';
+import winRegular from './media/win-regular.gif';
+import doomLogo from './media/doom.svg';
+import doomSong from './media/doom.ogg';
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import './App.css';
+import './css/vendors/reset.min.css';
+import './css/main.min.css';
 import io from 'socket.io-client';
 
 const words = [];
@@ -180,6 +182,7 @@ function App() {
   }
 
   function activateDoomMode() {
+    document.body.classList.add('s-doom');
     playPause();
     setDoomMode(doomMusicState.isPlaying);
     start();
@@ -203,14 +206,14 @@ function App() {
       return 0;
     });
     return(
-      <table>
+      <table className="oj-c-Table-content">
         <thead>
           <tr>
             {props.headers.map((item,index) => <th key={index}>{item}</th>)}
           </tr>
         </thead>
         <tbody>
-          {sortedWord.map((item,index) => <tr key={index} className={item.score === 1 ? 'goodAnswer' : ''}><td>{item.number}</td><td>{item.value}</td><td>{(item.score * 100).toFixed(2)}</td><td>{item.username ? item.username : ''}</td></tr> )}
+          {sortedWord.map((item,index) => <tr key={index} id={item.score === 1 ? 's-correctWord' : ''}><td>{item.number}</td><td>{item.value}</td><td>{(item.score * 100).toFixed(2)}</td><td>{item.username ? item.username : ''}</td></tr> )}
         </tbody>
       </table>
     )
@@ -229,7 +232,7 @@ function App() {
        console.log(err.message);
     });
     return (
-      <h5>Le mot précédent était : {lastWord}</h5>
+      <div className="s-prevWord">Le mot précédent était : {lastWord}</div>
     )
   }
 
@@ -333,27 +336,44 @@ function randerFire() {
 }
 
   return (
-    <div className="App">
-      <h1>Ojvindix</h1>
-      <div className="oj-c-MainInput">
-        <input type="text" placeholder="Mot" onChange={handleChanges} onKeyDown={handleKeyDown} value={message}/>
-        <button onClick={sendWord}>Envoyer</button>
+    <div className="oj-c-App">
+      <div className="oj-c-Page">
+        <div className="oj-c-Page-container wrap">
+          <div className="oj-c-Doom">
+            <div className="oj-c-Doom-btnContainer">
+              <div className="oj-c-Doom-tooltipContainer" data-tooltip="Activer le mode DOOM" data-tooltip-position="right" data-tooltip-style="doom" onClick={activateDoomMode}></div>
+              <button className="oj-c-Doom-btn">
+                <img className="oj-c-Doom-logo" src={doomLogo} />
+              </button>
+            </div>
+          </div>
+          <div className="oj-c-Interface">  
+            { win && (<img src={winRegular} alt="win GIF" width="100%" className="oj-c-Interface-bg" />)}      
+            <h1 className="oj-c-Interface-title">Ojvindix</h1>
+            <div className="oj-c-Search">
+              <input className="oj-c-Search-input oj-c-Input" type="text" placeholder="Mot" onChange={handleChanges} onKeyDown={handleKeyDown} value={message}/>
+              <button className="oj-c-Seach-btn oj-c-Btn" onClick={sendWord}>Envoyer</button>
+            </div>
+            <div className="oj-c-Table">
+              <TableFormList headers={["N°", "Mot", "Score", "Pseudo"]} formElements={words}/>
+            </div>
+            <div className="oj-c-Interface-footer">
+              <LastWordDisplay/>
+            </div>
+            <div className="oj-c-Multi">
+              <input className="oj-c-Input oj-c-Multi-input s-code" type="text" placeholder="Code" onChange={handleMultiplayerCodeChange} value={mutiplayerCode} disabled={isConnected} />
+              <input className="oj-c-Input oj-c-Multi-input s-pseudo" type="text" placeholder="Pseudo" onChange={handlePseudoChange} value={pseudo} />
+              { !isConnected && (<button className="oj-c-Btn oj-c-Multi-btn s-connect" onClick={connectMultiplayer}>Connexion</button>) }
+              { isConnected && (<button className="oj-c-Btn oj-c-Multi-btn s-disconnect" onClick={disconnectMultiplayer}>Déconnexion</button>) }
+            </div>
+            <footer className="oj-c-Interface-infos">
+              <div className="s-signature">
+                Made with love by Ojvind
+              </div>
+            </footer>
+          </div>
+        </div>
       </div>
-      <TableFormList
-            headers={["N°", "Mot", "Score", "Pseudo"]}
-            formElements={words}
-          />
-      { win && (<img src={winGif} alt="win GIF" width="100%" className="oj-c-WinGif" />)}
-      <LastWordDisplay/>
-      <div className="oj-c-MultiInput">
-        <input type="text" placeholder="Code" onChange={handleMultiplayerCodeChange} value={mutiplayerCode} disabled={isConnected} />
-        <input type="text" placeholder="Pseudo" onChange={handlePseudoChange} value={pseudo} />
-        { !isConnected && (<button onClick={connectMultiplayer}>Connect</button>) }
-        { isConnected && (<button onClick={disconnectMultiplayer}>Disconnect</button>) }
-      </div>
-      <h6>Made with love by Ojvind</h6>
-      <button onClick={activateDoomMode}>Activate Doom Mode</button>
-      {doomMode && (<canvas id="fire"></canvas>)}
     </div>
   );
 }
