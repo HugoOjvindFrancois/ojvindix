@@ -1,29 +1,34 @@
-# Getting Started with Create React App
-
+# Getting Started 
 Node version -> 16.18.1
 Npm version -> 8.19.2
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+`npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# FOR PROD ONLY !!!
 
-
-To start, you must be root
+To start for prod build, you must be root
 
 `sudo -i`
 
 `cd /path/to/ojvindix`
 
+Until in prod env the correct config is made :
+
 `chown -R root:root .`
 
-When finish you can revert the permission
+Add this in `package.json` in the `scripts` in the `start` :
+
+```
+HTTPS=true SSL_CRT_FILE=./.cert/cert.pem SSL_KEY_FILE=./.cert/key.pem PORT=443 react-scripts start
+```
+
+`npm start`
+
+When finish you can revert the permission to make change
 
 `chown -R <Your username>:<You username> .`

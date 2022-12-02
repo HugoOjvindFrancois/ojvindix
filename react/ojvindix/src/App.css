@@ -239,3 +239,11 @@ table tbody > tr:last-of-type td:last-of-type {
     width: 100%;
   }
 }
+
+canvas { 
+	background-color: #fff; 
+	position: relative;
+	bottom: 0;
+	left: 0;
+  width: 100%;
+}
