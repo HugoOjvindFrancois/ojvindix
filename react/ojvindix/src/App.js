@@ -183,6 +183,19 @@ function App() {
 
   function activateDoomMode() {
     document.body.classList.add('s-doom');
+    const interfaceTitle = document.getElementsByClassName("oj-c-Interface-title");
+    const doomTooltipContainer = document.getElementsByClassName("oj-c-Doom-tooltipContainer");
+    const doomStatus = document.getElementsByClassName("s-doomStatus");
+    const signature = document.getElementsByClassName("s-signature");
+
+
+    interfaceTitle[0].innerHTML = "<span>DOOM</span>jvindix";
+    doomStatus[0].innerHTML = "ON";
+    signature[0].innerHTML = "Made with hate by Ojvind";
+    doomTooltipContainer[0].setAttribute('data-tooltip', 'Abréger ma souffrance');
+
+  
+
     playPause();
     setDoomMode(doomMusicState.isPlaying);
     start();
@@ -344,6 +357,7 @@ function randerFire() {
               <div className="oj-c-Doom-tooltipContainer" data-tooltip="Activer le mode DOOM" data-tooltip-position="right" data-tooltip-style="doom" onClick={activateDoomMode}></div>
               <button className="oj-c-Doom-btn">
                 <img className="oj-c-Doom-logo" src={doomLogo} />
+                <span className="s-doomStatus">OFF</span>
               </button>
             </div>
           </div>
@@ -351,8 +365,10 @@ function randerFire() {
             { win && (<img src={winRegular} alt="win GIF" width="100%" className="oj-c-Interface-bg" />)}      
             <h1 className="oj-c-Interface-title">Ojvindix</h1>
             <div className="oj-c-Search">
-              <input className="oj-c-Search-input oj-c-Input" type="text" placeholder="Mot" onChange={handleChanges} onKeyDown={handleKeyDown} value={message}/>
-              <button className="oj-c-Seach-btn oj-c-Btn" onClick={sendWord}>Envoyer</button>
+              <div className="oj-c-Search-inner">
+                <input className="oj-c-Search-input oj-c-Input" type="text" placeholder="Mot" onChange={handleChanges} onKeyDown={handleKeyDown} value={message}/>
+                <button className="oj-c-Seach-btn oj-c-Btn" onClick={sendWord}>Envoyer</button>
+              </div>
             </div>
             <div className="oj-c-Table">
               <TableFormList headers={["N°", "Mot", "Score", "Pseudo"]} formElements={words}/>
