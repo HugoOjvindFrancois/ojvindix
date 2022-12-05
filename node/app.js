@@ -22,8 +22,8 @@ const server = https.createServer(options, app);
 
 var model;
 
-var currentWord = 'pourcentage';
-var lastWord = 'faucille';
+var currentWord = 'drogue';
+var lastWord = 'pourcentage';
 
 var group = new Map();
 
@@ -86,7 +86,7 @@ server.listen(port, () => {
 });
 
 const io = socket(server, {
-  cors: corsOptions
+  cors: corsOptions,
 });
 
 io.use(function (socket, next) {
@@ -98,18 +98,21 @@ io.use(function (socket, next) {
 
 io.on('connection', (socket) => {
   console.log('a user is connected');
+  console.log(socket.id);
   const multiCode = socket.handshake.headers['x-multiplayer-code'].trim();
   if (!group.get(multiCode)) {
     console.log('create team : ' + multiCode);
     group.set(multiCode, []);
   }
-  console.log('adding socket to team');
+  console.log('adding socket to team ' + multiCode);
   group.get(multiCode).push(socket);
 
   socket.on("disconnect", (reason) => {
     console.log('user disconnect');
     socket.disconnect();
-    // todo remove from array
+    group.set(multiCode,group.get(multiCode).filter(function (value, index, arr) {
+      return value.id != socket.id;
+    }));
     return;
   });
 
