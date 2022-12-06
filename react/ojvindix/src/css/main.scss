@@ -17,8 +17,10 @@
 // Variables
 // =====================================================================
 
-$font_family_base: 'Space Grotesk', sans-serif;
-$font_family_doom_main: 'Doom Main', sans-serif;
+$font_family_base: 'Space Grotesk',
+sans-serif;
+$font_family_doom_main: 'Doom Main',
+sans-serif;
 
 $z-index: (top: 3,
     medium: 2,
@@ -68,6 +70,7 @@ body {
     background: var(--color_grey);
     color: $color_white;
     position: relative;
+    overflow-x: hidden;
 
     &::after {
         content: '';
@@ -135,7 +138,8 @@ body {
 .oj-c-Search {
     position: sticky;
     top: 25px;
-    background: var(--color_grey);;
+    background: var(--color_grey);
+    ;
     padding: 25px 0px;
     top: -2px;
 
@@ -333,6 +337,53 @@ body {
     }
 }
 
+.oj-c-Fire {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 120%;
+    height: 242px;
+    z-index: map-get($z-index, deep);
+    pointer-events: none;
+    display: none;
+
+    &-animation {
+        position: absolute;
+        inset: 0;
+        background: url('./../media/doom-fire.gif');
+        background-repeat: repeat-x;
+        background-size: contain;
+        animation: fire 28s infinite;
+    }
+}
+
+@keyframes fire {
+    0% {
+        transform: translateY(20px) rotate(2deg);
+    }
+
+    20% {
+        transform: translateY(20px) rotate(-2deg);
+    }
+
+    40% {
+        transform: translateY(20px) rotate(0deg);
+    }
+
+    60% {
+        transform: translateY(20px) rotate(2deg);
+    }
+
+    80% {
+        transform: translateY(20px) rotate(-2deg);
+    }
+
+    100% {
+        transform: translateY(20px) rotate(2deg);
+    }
+}
+
 @media (max-width: 767px) {
     .oj-c-Interface {
         max-width: unset;
@@ -347,7 +398,16 @@ body {
 @media (max-width: 550px) {
     .oj-c-Multi {
         flex-direction: column;
-        margin: 0;
+        margin: 0 12px;
+
+        &-input,
+        &-btn {
+            margin: 12px 0;
+        }
+
+        &-btn {
+            margin-bottom: 0;
+        }
     }
 }
 
@@ -488,7 +548,6 @@ body.s-doom {
     }
 
     .oj-c-Search {
-
         &::before,
         &::after {
             //background-image: url('data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjIwIiB2aWV3Qm94PSIwIDAgMjAgMjAiIHdpZHRoPSIyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtNTYyIDk3N2MtMS4zODA3MTIgMC0yLjYzMDcxMi41NTk2NDQtMy41MzU1MzQgMS40NjQ0NjZzLTEuNDY0NDY2IDIuMTU0ODIyLTEuNDY0NDY2IDMuNTM1NTM0di01eiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC01NTYgLTk3NikiLz48L3N2Zz4=');
@@ -517,59 +576,116 @@ body.s-doom {
             opacity: 1;
         }
     }
+
+    .oj-c-Fire {
+        display: block;
+    }
 }
 
-
 // =====================================================================
-// Doom fire effects
+// Effects
 // Sources : 
-// https://github.com/filipedeschamps/doom-fire-algorithm
-// https://codepen.io/Detawher/pen/rNzagvm
+// https://codepen.io/meodai/pen/OVVzBb
 // =====================================================================
 
-#fireCanvas {
-    z-index: map-get($z-index, deep);
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    display: none;
 
-    table {
-        border-collapse: collapse;
-        border: none;
-        width: 100%;
-    }
-    
-    td {
-        width: 32px;
-        height: 32px;
-        color: #fff;
-        border: 1px solid var(--color_grey);
-        text-align: center;
-        vertical-align: center;
-        font-family: arial;
-        font-size: 10px;
-        position: relative;
-        font-weight: bold;
-    }
-    
-    td.pixel {
-        width: 4px;
-        height: 4px;
-        border: 0;
-    }
-    
-    .pixel-index {
-        font-size: 7px;
-        display: inline-block;
+@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
+
+$white: #e4f9fa;
+$yellow: #fde655;
+$orange: #d47946;
+$red: #7a2c1f;
+
+.container {
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+
+    &:before {
+        content: '';
         position: absolute;
-        top: 1px;
-        right: 1px;
-        color: #927450;
+        top: 50%;
+        left: 50%;
+        display: block;
+        width: 2rem;
+        height: 2rem;
+        background: rgba(#000, .25);
+        transform: rotate(45deg);
+        outline: 10px solid rgba(#000, .1);
+    }
+
+    &:nth-child(4n),
+    &:nth-child(7n) {
+        &:before {
+            display: none;
+        }
     }
 }
 
-.s-doom #fireCanvas {
+.particle {
+    position: absolute;
     display: block;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+
+    @for $i from 0 through 20 {
+        &:nth-child(#{$i + 1}) {
+            .sparcle {
+                animation-delay: $i * 50ms;
+            }
+        }
+    }
+}
+
+.sparcle {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 3rem;
+    height: 3rem;
+    background: rgba($white, 0);
+    will-change: transform, box-shadow, background-color;
+    transform: rotate(45deg) scale(0.5) translateZ(0);
+    animation: explode 333ms;
+
+    box-shadow: 0 0 0 0 $yellow;
+}
+
+@keyframes explode {
+    0% {
+        background-color: $white;
+        transform: rotate(45deg) scale(1.2) translateZ(0);
+        box-shadow: 0 0 0 0 $yellow;
+    }
+
+    40% {
+        background-color: rgba($white, .1);
+    }
+
+    50% {
+        transform: rotate(45deg) scale(1) translateZ(0);
+        box-shadow: 0 0 0 10px $yellow;
+        background-color: rgba($white, 0);
+    }
+
+    60% {
+        box-shadow: 0 0 0 50px $orange;
+        transform: rotate(45deg) scale(0.5) translateZ(0);
+    }
+
+    70% {
+        background-color: rgba($white, 0);
+        box-shadow: 0 0 0 30px $red;
+    }
+
+    100% {
+        background-color: $red;
+        box-shadow: 0 0 0 0 $red;
+        transform: rotate(45deg) scale(0.25) translateZ(0);
+    }
 }

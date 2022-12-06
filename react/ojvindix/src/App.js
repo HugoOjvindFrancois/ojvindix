@@ -193,8 +193,6 @@ function App() {
     signature[0].innerHTML = "Made with hate by Ojvind";
     doomTooltipContainer[0].setAttribute('data-tooltip', 'Abréger ma souffrance');
 
-  
-
     playPause();
   }
 
@@ -286,6 +284,9 @@ function App() {
               </div>
             </footer>
           </div>
+        </div>
+        <div className="oj-c-Fire">
+          <div className="oj-c-Fire-animation"></div>
         </div>
       </div>
     </div>
