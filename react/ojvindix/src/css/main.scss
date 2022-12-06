@@ -3,6 +3,7 @@
 // =====================================================================
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=block');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=block');
 
 @font-face {
     font-family: 'Doom Main';
@@ -17,8 +18,6 @@
 // Variables
 // =====================================================================
 
-$font_family_base: 'Space Grotesk',
-sans-serif;
 $font_family_doom_main: 'Doom Main',
 sans-serif;
 
@@ -51,6 +50,7 @@ $transition-regular: all .2s;
 }
 
 :root {
+    --font_family_base: 'Space Grotesk', sans-serif;
     --radius_medium: 20px;
     --radius_main: 50px;
     --radius_round: 50%;
@@ -62,7 +62,7 @@ $transition-regular: all .2s;
 
 body,
 html {
-    font-family: $font_family_base;
+    font-family: var(--font_family_base);;
     font-size: 16px;
 }
 
@@ -168,7 +168,7 @@ body {
 }
 
 .oj-c-Input {
-    font-family: $font_family_base;
+    font-family: var(--font_family_base);;
     height: 25px;
     appearance: none;
     border: 0;
@@ -180,7 +180,7 @@ body {
 }
 
 .oj-c-Btn {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font_family_base);
     height: 35px;
     appearance: none;
     border: 0;
@@ -199,7 +199,19 @@ body {
     transition: $transition-regular;
 }
 
+.s-doom {
+    .oj-c-Table {
+        td {
+            line-height: 1.5;
+        }
+    }
+}
+
 .oj-c-Table {
+    td {
+        hyphens: auto;
+        vertical-align: middle;
+    }
     &-content {
         text-align: center;
         color: $color_black;
@@ -307,7 +319,7 @@ body {
         box-shadow: $box_shadow_1;
 
         .s-doomStatus {
-            font-family: $font_family_base;
+            font-family: var(--font_family_base);;
             position: absolute;
             color: $color_white;
             font-weight: 700;
@@ -529,6 +541,8 @@ body {
 // =====================================================================
 
 body.s-doom {
+    font-size: 11px;
+    --font_family_base: 'Press Start 2P', cursive;
     --radius_medium: 4px;
     --radius_main: 4px;
     --color-accent: #df4419;
@@ -577,6 +591,20 @@ body.s-doom {
         }
     }
 
+    .oj-c-Btn,
+    .oj-c-Input {
+        font-size: 11px;
+    }
+    .s-prevWord,
+    .s-signature {
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
+    td {
+        font-size: 9px !important;
+    }
+
     .oj-c-Fire {
         display: block;
     }
@@ -587,9 +615,6 @@ body.s-doom {
 // Sources : 
 // https://codepen.io/meodai/pen/OVVzBb
 // =====================================================================
-
-
-@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
 
 $white: #e4f9fa;
 $yellow: #fde655;

@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=block");
-@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=block");
 @font-face {
   font-family: "Doom Main";
   src: url("./../media/doom-main.woff2") format("woff2"), url("./../media/doom-main.woff") format("woff");
@@ -12,6 +12,7 @@
 }
 
 :root {
+  --font_family_base: "Space Grotesk", sans-serif;
   --radius_medium: 20px;
   --radius_main: 50px;
   --radius_round: 50%;
@@ -23,7 +24,7 @@
 
 body,
 html {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font_family_base);
   font-size: 16px;
 }
 
@@ -116,7 +117,7 @@ body::after {
 }
 
 .oj-c-Input {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font_family_base);
   height: 25px;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -130,7 +131,7 @@ body::after {
 }
 
 .oj-c-Btn {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font_family_base);
   height: 35px;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -151,6 +152,16 @@ body::after {
   transition: all 0.2s;
 }
 
+.s-doom .oj-c-Table td {
+  line-height: 1.5;
+}
+
+.oj-c-Table td {
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+  vertical-align: middle;
+}
 .oj-c-Table-content {
   text-align: center;
   color: #000;
@@ -242,7 +253,7 @@ body::after {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 .oj-c-Doom-btn .s-doomStatus {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font_family_base);
   position: absolute;
   color: #fff;
   font-weight: 700;
@@ -444,6 +455,8 @@ body::after {
   }
 }
 body.s-doom {
+  font-size: 11px;
+  --font_family_base: "Press Start 2P", cursive;
   --radius_medium: 4px;
   --radius_main: 4px;
   --color-accent: #df4419;
@@ -474,6 +487,18 @@ body.s-doom .oj-c-Doom-btn .s-doomStatus {
 }
 body.s-doom .oj-c-Doom-logo {
   opacity: 1;
+}
+body.s-doom .oj-c-Btn,
+body.s-doom .oj-c-Input {
+  font-size: 11px;
+}
+body.s-doom .s-prevWord,
+body.s-doom .s-signature {
+  font-size: 11px;
+  line-height: 1.5;
+}
+body.s-doom td {
+  font-size: 9px !important;
 }
 body.s-doom .oj-c-Fire {
   display: block;
