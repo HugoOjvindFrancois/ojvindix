@@ -292,7 +292,7 @@ body {
 
     #s-correctWord>td {
         background-color: var(--color_correct);
-        border-color: var(--color_correct);
+        border-color: var(--color_correct) !important;
         color: $color_white;
     }
 }
