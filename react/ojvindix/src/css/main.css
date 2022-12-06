@@ -157,8 +157,6 @@ body::after {
   margin-top: 0px;
   margin-bottom: 25px;
   border-collapse: separate;
-  height: 1300px;
-  background-color: #fff;
 }
 .oj-c-Table th,
 .oj-c-Table td {
