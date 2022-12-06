@@ -17,10 +17,8 @@
 // Variables
 // =====================================================================
 
-$font_family_base: 'Space Grotesk',
-sans-serif;
-$font_family_doom_main: 'Doom Main',
-sans-serif;
+$font_family_base: 'Space Grotesk', sans-serif;
+$font_family_doom_main: 'Doom Main', sans-serif;
 
 $z-index: (top: 3,
     medium: 2,
@@ -536,42 +534,42 @@ body.s-doom {
     left: 0;
     width: 100%;
     display: none;
+
+    table {
+        border-collapse: collapse;
+        border: none;
+        width: 100%;
+    }
+    
+    td {
+        width: 32px;
+        height: 32px;
+        color: #fff;
+        border: 1px solid var(--color_grey);
+        text-align: center;
+        vertical-align: center;
+        font-family: arial;
+        font-size: 10px;
+        position: relative;
+        font-weight: bold;
+    }
+    
+    td.pixel {
+        width: 4px;
+        height: 4px;
+        border: 0;
+    }
+    
+    .pixel-index {
+        font-size: 7px;
+        display: inline-block;
+        position: absolute;
+        top: 1px;
+        right: 1px;
+        color: #927450;
+    }
 }
 
 .s-doom #fireCanvas {
     display: block;
-}
-
-table {
-    border-collapse: collapse;
-    border: none;
-    width: 100%;
-}
-
-td {
-    width: 32px;
-    height: 32px;
-    color: #fff;
-    border: 1px solid var(--color_grey);
-    text-align: center;
-    vertical-align: center;
-    font-family: arial;
-    font-size: 10px;
-    position: relative;
-    font-weight: bold;
-}
-
-td.pixel {
-    width: 4px;
-    height: 4px;
-    border: 0;
-}
-
-.pixel-index {
-    font-size: 7px;
-    display: inline-block;
-    position: absolute;
-    top: 1px;
-    right: 1px;
-    color: #927450;
 }

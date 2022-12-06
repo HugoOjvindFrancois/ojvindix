@@ -414,18 +414,12 @@ body.s-doom .oj-c-Doom-logo {
   width: 100%;
   display: none;
 }
-
-.s-doom #fireCanvas {
-  display: block;
-}
-
-table {
+#fireCanvas table {
   border-collapse: collapse;
   border: none;
   width: 100%;
 }
-
-td {
+#fireCanvas td {
   width: 32px;
   height: 32px;
   color: #fff;
@@ -437,18 +431,20 @@ td {
   position: relative;
   font-weight: bold;
 }
-
-td.pixel {
+#fireCanvas td.pixel {
   width: 4px;
   height: 4px;
   border: 0;
 }
-
-.pixel-index {
+#fireCanvas .pixel-index {
   font-size: 7px;
   display: inline-block;
   position: absolute;
   top: 1px;
   right: 1px;
   color: #927450;
+}
+
+.s-doom #fireCanvas {
+  display: block;
 }/*# sourceMappingURL=main.css.map */
