@@ -497,6 +497,9 @@ body.s-doom .s-signature {
   font-size: 11px;
   line-height: 1.5;
 }
+body.s-doom .oj-c-Table #s-correctWord {
+  top: 111px;
+}
 body.s-doom td {
   font-size: 9px !important;
 }
