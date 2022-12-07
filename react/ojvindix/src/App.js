@@ -14,6 +14,7 @@ var multiplayer = {
 };
 
 var win = false;
+var doomMode = false;
 
 function App() {
 
@@ -23,7 +24,7 @@ function App() {
   const [count, setCount] = useState(0);
   const [lastWord, setLastWord] = useState(0);
   const [isConnected, setIsConnected] = useState(multiplayer.connected);
-  const [doomMode, setDoomMode] = useState(false);
+
   var doomMusicState = {
     audio: new Audio(doomSong),
     isPlaying: false,
@@ -181,17 +182,26 @@ function App() {
   }
 
   function activateDoomMode() {
-    document.body.classList.add('s-doom');
+    doomMode = !doomMode;
+    
     const interfaceTitle = document.getElementsByClassName("oj-c-Interface-title");
     const doomTooltipContainer = document.getElementsByClassName("oj-c-Doom-tooltipContainer");
     const doomStatus = document.getElementsByClassName("s-doomStatus");
     const signature = document.getElementsByClassName("s-signature");
 
-
-    interfaceTitle[0].innerHTML = "<span>DOOM</span>jvindix";
-    doomStatus[0].innerHTML = "ON";
-    signature[0].innerHTML = "Made with hate by Ojvind";
-    doomTooltipContainer[0].setAttribute('data-tooltip', 'Abréger ma souffrance');
+    if (doomMode) {
+      document.body.classList.add('s-doom');
+      interfaceTitle[0].innerHTML = "<span>DOOM</span>jvindix";
+      doomStatus[0].innerHTML = "ON";
+      signature[0].innerHTML = "Made with hate by Ojvind";
+      doomTooltipContainer[0].setAttribute('data-tooltip', 'Abréger ma souffrance');
+    } else {
+      document.body.classList.remove('s-doom');
+      interfaceTitle[0].innerHTML = "Ojvindix";
+      doomStatus[0].innerHTML = "OFF";
+      signature[0].innerHTML = "Made with love by Ojvind";
+      doomTooltipContainer[0].setAttribute('data-tooltip', 'Activer le mode DOOM');
+    }
 
     playPause();
   }

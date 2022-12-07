@@ -22,8 +22,8 @@ const server = https.createServer(options, app);
 
 var model;
 
-var currentWord = 'drogue';
-var lastWord = 'pourcentage';
+var currentWord = 'pizza';
+var lastWord = 'drogue';
 
 var group = new Map();
 
@@ -41,7 +41,7 @@ broadcastWordToTeam = function (multiplayerCode, body) {
 }
 
 app.use(express.json());
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.send('Welcome to Ojvindix')
