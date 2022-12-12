@@ -16,6 +16,10 @@ var multiplayer = {
 var win = false;
 var doomMode = false;
 
+document.addEventListener('DOMContentLoaded', function(event) {
+  document.body.classList.remove('no-transition');
+});
+
 function App() {
 
   const [message, setMessage] = useState('');
@@ -216,19 +220,48 @@ function App() {
     const doomTooltipContainer = document.getElementsByClassName("oj-c-Doom-tooltipContainer");
     const doomStatus = document.getElementsByClassName("s-doomStatus");
     const signature = document.getElementsByClassName("s-signature");
+    const mouseEffectSquare = document.getElementsByClassName("container");
+    const splash = document.querySelector(".oj-c-Splash");
+    const splashContent = document.getElementsByClassName("oj-c-Splash-content");
 
     if (doomMode) {
-      document.body.classList.add('s-doom');
-      interfaceTitle[0].innerHTML = "<span>DOOM</span>jvindix";
-      doomStatus[0].innerHTML = "ON";
-      signature[0].innerHTML = "Made with hate by Ojvind";
-      doomTooltipContainer[0].setAttribute('data-tooltip', 'Abréger ma souffrance');
+      splash.classList.add('is-active');
+      splash.classList.add('is-doom');
+      document.body.classList.add('no-transition');
+      splashContent[0].innerHTML = "😡";
+      setTimeout(function(){
+        splash.classList.remove('is-active');
+        document.body.classList.add('s-doom');
+        interfaceTitle[0].innerHTML = "<span>DOOM</span>jvindix";
+        doomStatus[0].innerHTML = "ON";
+        signature[0].innerHTML = "Made with hate by Ojvind";
+        doomTooltipContainer[0].setAttribute('data-tooltip', 'Abréger ma souffrance');
+      }, 400);
+      setTimeout(function(){
+        document.body.classList.remove('no-transition');
+      }, 420);
     } else {
-      document.body.classList.remove('s-doom');
-      interfaceTitle[0].innerHTML = "Ojvindix";
-      doomStatus[0].innerHTML = "OFF";
-      signature[0].innerHTML = "Made with love by Ojvind";
-      doomTooltipContainer[0].setAttribute('data-tooltip', 'Activer le mode DOOM');
+      splash.classList.add('is-active');
+      splash.classList.add('is-regular');
+      document.body.classList.add('no-transition');
+      splashContent[0].innerHTML = "😊";
+      setTimeout(function(){
+        splash.classList.remove('is-active');
+        document.body.classList.remove('s-doom');
+        interfaceTitle[0].innerHTML = "Ojvindix";
+        doomStatus[0].innerHTML = "OFF";
+        signature[0].innerHTML = "Made with love by Ojvind";
+        doomTooltipContainer[0].setAttribute('data-tooltip', 'Activer le mode DOOM');
+      }, 400);
+      setTimeout(function(){
+        document.body.classList.remove('no-transition');
+      }, 420);
+
+      console.log(mouseEffectSquare);
+
+      for (let i = 0; i < mouseEffectSquare.length; i++) {
+        mouseEffectSquare[i].remove();
+      }
     }
 
     playPause();
@@ -278,8 +311,28 @@ function App() {
   }
 
   function Timer() {
+    // Source : https://codepen.io/jsstrn/pen/mMMmZB
+    /*
+    const getFontSize = (textLength) => {
+      console.log('ftsize')
+      const baseSize = 60
+      if (textLength >= baseSize) {
+        textLength = baseSize - 2
+      }
+      const fontSize = baseSize - textLength
+      return `${fontSize}vw`
+    }
+    
+    const boxes = document.querySelectorAll('.oj-c-Timer-time')
+
+    console.log(document.querySelectorAll('.oj-c-Timer-time'));
+      
+    boxes.forEach(box => {
+      box.style.fontSize = getFontSize(box.textContent.length)
+    })
+    */
     return (
-      <div className="time">
+      <div className="oj-c-Timer-time">
         {seconds}s
       </div>
     );
@@ -327,9 +380,6 @@ function App() {
             <div className="oj-c-Table">
               <TableFormList headers={["N°", "Mot", "Score", "Pseudo"]} formElements={words}/>
             </div>
-            <div className="timer plsChangeThisChris">
-              <Timer/>
-            </div>
             <div className="oj-c-Interface-footer">
               <LastWordDisplay/>
             </div>
@@ -346,8 +396,21 @@ function App() {
             </footer>
           </div>
         </div>
+        <div className="oj-c-Timer wrap">
+          <div className="oj-c-Timer-inner">
+            <Timer/>
+          </div>
+        </div>
+        <div className="oj-c-bottomMenu wrap"></div>
         <div className="oj-c-Fire">
           <div className="oj-c-Fire-animation"></div>
+        </div>
+        <div className="oj-c-Bottom"></div>
+        <div className="oj-c-Splash">
+          <div className="oj-c-Splash-inner">
+            <div className="oj-c-Splash-content">
+            </div>
+          </div>
         </div>
       </div>
     </div>

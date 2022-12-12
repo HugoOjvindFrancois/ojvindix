@@ -18,14 +18,16 @@
 // Variables
 // =====================================================================
 
-$font_family_doom_main: 'Doom Main',
-sans-serif;
+$font_family_doom_main: 'Doom Main', sans-serif;
 
-$z-index: (top: 3,
+$z-index: (
+    xTop: 4,
+    top: 3,
     medium: 2,
     regular: 1,
     background: -1,
     deep: -2,
+    xDeep: -3
 );
 
 $color_black: #000;
@@ -40,6 +42,7 @@ $box_shadow_1: 0 3px 6px rgba(0, 0, 0, 0.16),
 0 3px 6px rgba(0, 0, 0, 0.23);
 
 $transition-regular: all .2s;
+$transition-splash: all .42s, opacity .2s;
 
 // =====================================================================
 // Global
@@ -79,8 +82,9 @@ body {
         top: 25%;
         background: var(--color_grey);
         background: $gradient_blue;
-        z-index: map-get($z-index, deep);
+        z-index: map-get($z-index, xDeep);
         opacity: .37;
+        pointer-events: none;
     }
 }
 
@@ -168,7 +172,7 @@ body {
 }
 
 .oj-c-Input {
-    font-family: var(--font_family_base);;
+    font-family: var(--font_family_base);
     height: 25px;
     appearance: none;
     border: 0;
@@ -203,6 +207,20 @@ body {
     .oj-c-Table {
         td {
             line-height: 1.5;
+        }
+    }
+    .oj-c-Timer-time {
+        font-size: 13px;
+    }
+    .oj-c-bottomMenu {
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+    }
+    .oj-c-Doom {
+        &-tooltipContainer {
+            &::after {
+                font-size: 9px !important;
+            }
         }
     }
 }
@@ -305,6 +323,7 @@ body {
 .oj-c-Doom {
     position: fixed;
     bottom: 25px;
+    z-index: map-get($z-index, top);
 
     &-btn {
         background: linear-gradient(180deg, rgba(33, 33, 33, 1) 23%, rgba(192, 104, 34, 1) 74%, rgba(83, 31, 24, 1) 100%);
@@ -319,12 +338,14 @@ body {
         box-shadow: $box_shadow_1;
 
         .s-doomStatus {
-            font-family: var(--font_family_base);;
+            font-family: 'Press Start 2P', cursive;
             position: absolute;
             color: $color_white;
             font-weight: 700;
             top: calc(50% + 6px);
             opacity: .6;
+            font-size: 10px;
+            margin-top: 3px;
         }
     }
 
@@ -346,6 +367,10 @@ body {
         height: 100%;
         cursor: pointer;
         z-index: map-get($z-index, regular);
+
+        &::after {
+            font-size: 13px !important;
+        }
     }
 }
 
@@ -356,7 +381,7 @@ body {
     bottom: 0;
     width: 120%;
     height: 242px;
-    z-index: map-get($z-index, deep);
+    z-index: map-get($z-index, xDeep);
     pointer-events: none;
     display: none;
 
@@ -396,6 +421,185 @@ body {
     }
 }
 
+// =====================================================================
+// Doom
+// =====================================================================
+
+body.s-doom {
+    font-size: 11px;
+    --font_family_base: 'Press Start 2P', cursive;
+    --radius_medium: 4px;
+    --radius_main: 4px;
+    --color-accent: #df4419;
+    --color-accent-hover: #ad3311;
+    --color_correct: #c91515;
+    --color_grey: #000;
+
+    &::after {
+        background: $gradient_red !important;
+    }
+
+    .oj-c-Interface {
+        &-title {
+            font-family: $font_family_doom_main;
+            letter-spacing: 6px;
+        }
+    }
+
+    .oj-c-Search {
+        &::before,
+        &::after {
+            //background-image: url('data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjIwIiB2aWV3Qm94PSIwIDAgMjAgMjAiIHdpZHRoPSIyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtNTYyIDk3N2MtMS4zODA3MTIgMC0yLjYzMDcxMi41NTk2NDQtMy41MzU1MzQgMS40NjQ0NjZzLTEuNDY0NDY2IDIuMTU0ODIyLTEuNDY0NDY2IDMuNTM1NTM0di01eiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC01NTYgLTk3NikiLz48L3N2Zz4=');
+            background-image: url('data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjIwIiB2aWV3Qm94PSIwIDAgMjAgMjAiIHdpZHRoPSIyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtNTYyIDk3N2MtMS4zODA3MTIgMC0yLjYzMDcxMi41NTk2NDQtMy41MzU1MzQgMS40NjQ0NjZzLTEuNDY0NDY2IDIuMTU0ODIyLTEuNDY0NDY2IDMuNTM1NTM0di01eiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC01NTYgLTk3NikiLz48L3N2Zz4=');
+        }
+
+        &::before {
+            top: calc(100% - 2px);
+            left: -2px;
+        }
+
+        &::after {
+            top: calc(100% - 2px);
+            right: -2px;
+        }
+    }
+
+    .oj-c-Doom {
+        &-btn {
+            .s-doomStatus {
+                opacity: 1;
+            }
+        }
+
+        &-logo {
+            opacity: 1;
+        }
+    }
+
+    .oj-c-Btn,
+    .oj-c-Input {
+        font-size: 11px;
+    }
+    .s-prevWord,
+    .s-signature {
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
+    .oj-c-Table #s-correctWord {
+        top: 111px;
+    }
+
+    td {
+        font-size: 9px !important;
+    }
+
+    .oj-c-Fire {
+        display: block;
+    }
+}
+
+// =====================================================================
+// Timer
+// =====================================================================
+
+.oj-c-Timer {
+    position: fixed;
+    bottom: 25px;
+    width: calc(100% - 25px * 2);
+    display: flex;
+    justify-content: flex-end;
+    z-index: map-get($z-index, medium);
+    font-family: var(--font_family_base);
+    font-weight: 700;
+    font-size: clamp(5px, 15px, 60px);
+
+    &-inner {
+        background: var(--color_grey);
+        border: 2px solid var(--color_grey);
+        border-radius: var(--radius_round);
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: $transition-regular;
+        box-shadow: $box_shadow_1;
+    }
+    &-time {
+        font-size: 18px;
+        line-height: 1;
+    }
+}
+
+// =====================================================================
+// Transition
+// =====================================================================
+
+.container {
+    display: none !important;
+}
+
+.oj-c-Splash {
+    position: fixed;
+    overflow: hidden;
+    inset: 0;
+    background: var(--color_grey);
+    z-index: map-get($z-index, xTop);
+    opacity: 0;
+    transform: scale(1.2);
+    pointer-events: none;
+    transition: $transition-splash !important;
+
+    &-inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+    &-content {
+        font-size: 120px;
+        font-family: 'Space Grotesk', sans-serif !important;
+    }
+
+    &.is-active {
+        opacity: 1;
+        transform: scale(1);
+    }
+    &.is-doom {
+        background: #a43414;
+    }
+    &.is-regular {
+        background: #0f5c9b;
+    }
+}
+
+// =====================================================================
+// Bottom Menu
+// =====================================================================
+
+.oj-c-Bottom {
+    display: none;
+    height: 0;
+    pointer-events: none;
+}
+
+.oj-c-bottomMenu {
+    display: none;
+    //background: rgba(27, 126, 207, .9);
+    background: rgba(0, 0, 0, .87);
+    backdrop-filter: blur(2px);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    //border-top: 2px solid var(--color-accent);
+    position: fixed;
+    width: calc(100% - 25px * 2);
+    bottom: 0;
+    height: 79px;
+    z-index: map-get($z-index, regular);
+    pointer-events: none;
+}
+
 @media (max-width: 767px) {
     .oj-c-Interface {
         max-width: unset;
@@ -404,6 +608,39 @@ body {
 
     [data-tooltip]::after {
         display: none !important;
+    }
+    .oj-c-bottomMenu {
+        display: block;
+    }
+    .oj-c-Doom {
+        bottom: 15px;
+
+        &-btn {
+            width: 45px;
+            height: 45px;
+
+            .s-doomStatus {
+                margin-top: 0;
+                font-size: 8.5px;
+            }
+        }
+    }
+    .oj-c-Bottom {
+        display: block;
+        background: transparent;
+        height: 79px;
+    }
+    .oj-c-Timer {
+        bottom: 15px;
+
+        &-inner {
+            box-shadow: none;
+            background: transparent;
+            border-radius: 0;
+            border: 0;
+            width: 45px;
+            height: 45px;
+        }
     }
 }
 
@@ -497,16 +734,16 @@ body {
     }
 
     [data-tooltip][data-tooltip-position="right"]::after {
-        transform: translate(50%, -50%) scale(0.9);
+        transform: translate(0%, -50%) scale(0.9);
         transform-origin: left;
         right: 0;
-        left: 0;
+        left: calc(60px + 15px);
         bottom: unset;
         top: 50%;
     }
 
     [data-tooltip]:hover[data-tooltip-position="right"]::after {
-        transform: translate(50%, -50%) scale(1);
+        transform: translate(0%, -50%) scale(1);
         transform-origin: left;
         bottom: unset;
         top: 50%;
@@ -537,84 +774,6 @@ body {
 }
 
 // =====================================================================
-// Doom
-// =====================================================================
-
-body.s-doom {
-    font-size: 11px;
-    --font_family_base: 'Press Start 2P', cursive;
-    --radius_medium: 4px;
-    --radius_main: 4px;
-    --color-accent: #df4419;
-    --color-accent-hover: #ad3311;
-    --color_correct: #c91515;
-    --color_grey: #000;
-
-    &::after {
-        background: $gradient_red !important;
-    }
-
-    .oj-c-Interface {
-        &-title {
-            font-family: $font_family_doom_main;
-            letter-spacing: 6px;
-        }
-    }
-
-    .oj-c-Search {
-        &::before,
-        &::after {
-            //background-image: url('data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjIwIiB2aWV3Qm94PSIwIDAgMjAgMjAiIHdpZHRoPSIyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtNTYyIDk3N2MtMS4zODA3MTIgMC0yLjYzMDcxMi41NTk2NDQtMy41MzU1MzQgMS40NjQ0NjZzLTEuNDY0NDY2IDIuMTU0ODIyLTEuNDY0NDY2IDMuNTM1NTM0di01eiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC01NTYgLTk3NikiLz48L3N2Zz4=');
-            background-image: url('data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjIwIiB2aWV3Qm94PSIwIDAgMjAgMjAiIHdpZHRoPSIyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtNTYyIDk3N2MtMS4zODA3MTIgMC0yLjYzMDcxMi41NTk2NDQtMy41MzU1MzQgMS40NjQ0NjZzLTEuNDY0NDY2IDIuMTU0ODIyLTEuNDY0NDY2IDMuNTM1NTM0di01eiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC01NTYgLTk3NikiLz48L3N2Zz4=');
-        }
-
-        &::before {
-            top: calc(100% - 2px);
-            left: -2px;
-        }
-
-        &::after {
-            top: calc(100% - 2px);
-            right: -2px;
-        }
-    }
-
-    .oj-c-Doom {
-        &-btn {
-            .s-doomStatus {
-                opacity: 1;
-            }
-        }
-
-        &-logo {
-            opacity: 1;
-        }
-    }
-
-    .oj-c-Btn,
-    .oj-c-Input {
-        font-size: 11px;
-    }
-    .s-prevWord,
-    .s-signature {
-        font-size: 11px;
-        line-height: 1.5;
-    }
-
-    .oj-c-Table #s-correctWord {
-        top: 111px;
-    }
-
-    td {
-        font-size: 9px !important;
-    }
-
-    .oj-c-Fire {
-        display: block;
-    }
-}
-
-// =====================================================================
 // Effects
 // Sources : 
 // https://codepen.io/meodai/pen/OVVzBb
@@ -626,7 +785,8 @@ $orange: #d47946;
 $red: #7a2c1f;
 
 .container {
-    position: absolute;
+    //position: absolute;
+    position: fixed;
     width: 20rem;
     height: 20rem;
     transform: translate(-50%, -50%);
