@@ -72,7 +72,7 @@ function App() {
       return;
     }
 
-    if (body.score === 1) {
+    if (body.value === 1) {
       win = true;
       if (timerActive === true) {
         switchTimerActive();
