@@ -211,7 +211,7 @@ body {
     }
     .oj-c-Timer {
         &-time {
-            font-size: 13px;
+            font-size: 11px;
         }
     }
     .oj-c-bottomMenu {
@@ -381,7 +381,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    width: 120%;
+    width: 140%;
     height: 242px;
     z-index: map-get($z-index, xDeep);
     pointer-events: none;
@@ -399,11 +399,11 @@ body {
 
 @keyframes fire {
     0% {
-        transform: translateY(30px) rotate(2deg);
+        transform: translateY(30px) rotate(1deg);
     }
 
     20% {
-        transform: translateY(30px) rotate(-2deg);
+        transform: translateY(30px) rotate(-1deg);
     }
 
     40% {
@@ -411,15 +411,15 @@ body {
     }
 
     60% {
-        transform: translateY(30px) rotate(2deg);
+        transform: translateY(30px) rotate(1deg);
     }
 
     80% {
-        transform: translateY(30px) rotate(-2deg);
+        transform: translateY(30px) rotate(-1deg);
     }
 
     100% {
-        transform: translateY(30px) rotate(2deg);
+        transform: translateY(30px) rotate(1deg);
     }
 }
 
@@ -506,9 +506,8 @@ body.s-doom {
 // =====================================================================
 
 .oj-c-Timer {
-    position: fixed;
+    position: relative;
     bottom: 25px;
-    width: calc(100% - 25px * 2);
     display: flex;
     justify-content: flex-end;
     z-index: map-get($z-index, medium);
@@ -517,8 +516,10 @@ body.s-doom {
     font-size: clamp(5px, 15px, 60px);
 
     &-inner {
+        position: fixed;
+        bottom: 25px;
         background: var(--color_grey);
-        border: 2px solid var(--color_grey);
+        border: 0;
         border-radius: var(--radius_round);
         width: 60px;
         height: 60px;
@@ -530,7 +531,7 @@ body.s-doom {
         text-align: center;
     }
     &-time {
-        font-size: 18px;
+        font-size: 17px;
         line-height: 1;
     }
 }
@@ -634,9 +635,8 @@ body.s-doom {
         height: 79px;
     }
     .oj-c-Timer {
-        bottom: 15px;
-
         &-inner {
+            bottom: 15px;
             box-shadow: none;
             background: transparent;
             border-radius: 0;
@@ -645,6 +645,13 @@ body.s-doom {
             height: 45px;
             justify-content: flex-end;
             text-align: right;
+        }
+    }
+    .oj-c-Multi {
+        > input {
+            &:first-of-type {
+                margin-top: 0;
+            }
         }
     }
 }

@@ -157,7 +157,7 @@ body::after {
   line-height: 1.5;
 }
 .s-doom .oj-c-Timer-time {
-  font-size: 13px;
+  font-size: 11px;
 }
 .s-doom .oj-c-bottomMenu {
   border-top-left-radius: 7px;
@@ -300,7 +300,7 @@ body::after {
   left: 0;
   right: 0;
   bottom: 0;
-  width: 120%;
+  width: 140%;
   height: 242px;
   z-index: -3;
   pointer-events: none;
@@ -318,43 +318,43 @@ body::after {
 
 @-webkit-keyframes fire {
   0% {
-    transform: translateY(30px) rotate(2deg);
+    transform: translateY(30px) rotate(1deg);
   }
   20% {
-    transform: translateY(30px) rotate(-2deg);
+    transform: translateY(30px) rotate(-1deg);
   }
   40% {
     transform: translateY(30px) rotate(0deg);
   }
   60% {
-    transform: translateY(30px) rotate(2deg);
+    transform: translateY(30px) rotate(1deg);
   }
   80% {
-    transform: translateY(30px) rotate(-2deg);
+    transform: translateY(30px) rotate(-1deg);
   }
   100% {
-    transform: translateY(30px) rotate(2deg);
+    transform: translateY(30px) rotate(1deg);
   }
 }
 
 @keyframes fire {
   0% {
-    transform: translateY(30px) rotate(2deg);
+    transform: translateY(30px) rotate(1deg);
   }
   20% {
-    transform: translateY(30px) rotate(-2deg);
+    transform: translateY(30px) rotate(-1deg);
   }
   40% {
     transform: translateY(30px) rotate(0deg);
   }
   60% {
-    transform: translateY(30px) rotate(2deg);
+    transform: translateY(30px) rotate(1deg);
   }
   80% {
-    transform: translateY(30px) rotate(-2deg);
+    transform: translateY(30px) rotate(-1deg);
   }
   100% {
-    transform: translateY(30px) rotate(2deg);
+    transform: translateY(30px) rotate(1deg);
   }
 }
 body.s-doom {
@@ -411,9 +411,8 @@ body.s-doom .oj-c-Fire {
 }
 
 .oj-c-Timer {
-  position: fixed;
+  position: relative;
   bottom: 25px;
-  width: calc(100% - 50px);
   display: flex;
   justify-content: flex-end;
   z-index: 2;
@@ -422,8 +421,10 @@ body.s-doom .oj-c-Fire {
   font-size: 15px;
 }
 .oj-c-Timer-inner {
+  position: fixed;
+  bottom: 25px;
   background: var(--color_grey);
-  border: 2px solid var(--color_grey);
+  border: 0;
   border-radius: var(--radius_round);
   width: 60px;
   height: 60px;
@@ -435,7 +436,7 @@ body.s-doom .oj-c-Fire {
   text-align: center;
 }
 .oj-c-Timer-time {
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1;
 }
 
@@ -523,10 +524,8 @@ body.s-doom .oj-c-Fire {
     background: transparent;
     height: 79px;
   }
-  .oj-c-Timer {
-    bottom: 15px;
-  }
   .oj-c-Timer-inner {
+    bottom: 15px;
     box-shadow: none;
     background: transparent;
     border-radius: 0;
@@ -535,6 +534,9 @@ body.s-doom .oj-c-Fire {
     height: 45px;
     justify-content: flex-end;
     text-align: right;
+  }
+  .oj-c-Multi > input:first-of-type {
+    margin-top: 0;
   }
 }
 @media (max-width: 550px) {

@@ -370,6 +370,11 @@ function App() {
               </button>
             </div>
           </div>
+          <div className="oj-c-Timer">
+            <div className="oj-c-Timer-inner">
+              <Timer/>
+            </div>
+          </div>
           <div className="oj-c-Interface">  
             { win && (<img src={winRegular} alt="win GIF" width="100%" className="oj-c-Interface-bg" />)}      
             <h1 className="oj-c-Interface-title">Ojvindix</h1>
@@ -396,11 +401,6 @@ function App() {
                 Made with love by Ojvind
               </div>
             </footer>
-          </div>
-        </div>
-        <div className="oj-c-Timer wrap">
-          <div className="oj-c-Timer-inner">
-            <Timer/>
           </div>
         </div>
         <div className="oj-c-bottomMenu wrap"></div>
