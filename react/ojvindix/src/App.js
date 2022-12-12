@@ -24,11 +24,22 @@ function App() {
   const [count, setCount] = useState(0);
   const [lastWord, setLastWord] = useState(0);
   const [isConnected, setIsConnected] = useState(multiplayer.connected);
+  const [seconds, setSeconds] = useState(0);
+  const [timerActive, setTimerActive] = useState(false);
 
   var doomMusicState = {
     audio: new Audio(doomSong),
     isPlaying: false,
   };
+
+  function resetTimer() {
+    setSeconds(0);
+    setTimerActive(false);
+  }
+
+  function switchTimerActive() {
+    setTimerActive(!timerActive);
+  }
 
   function playPause() {
     let isPlaying = doomMusicState.isPlaying;
@@ -57,12 +68,19 @@ function App() {
     console.log('Receive new word from multiplayer team');
     console.log(body);
 
-    if (body.score === 1) {
-      win = true;
-    }
-
     if (!body.value) {
       return;
+    }
+
+    if (body.score === 1) {
+      win = true;
+      if (timerActive === true) {
+        switchTimerActive();
+      }
+    }
+
+    if (timerActive === false) {
+      switchTimerActive();
     }
 
     if (!isDuplicate(body.word)) {
@@ -108,6 +126,9 @@ function App() {
       multiplayer.connected = true;
       setIsConnected(true);
     });
+    multiplayer.socket.on("new-word", () => {
+      resetTimer();
+    })
     multiplayer.socket.on('word', onBroadcastWord);
   }
 
@@ -145,6 +166,13 @@ function App() {
 
         if (score === 1) {
           win = true;
+          if (timerActive === true) {
+            switchTimerActive();
+          }
+        }
+
+        if (timerActive === false) {
+          switchTimerActive();
         }
 
         if (!score) {
@@ -212,6 +240,18 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    let interval = null;
+    if (timerActive) {
+      interval = setInterval(() => {
+        setSeconds(seconds => seconds + 1);
+      }, 1000);
+    } else if (!timerActive && seconds !== 0) {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [timerActive, seconds]);
+
   function TableFormList(props) {
     let sortedWord = [...props.formElements];
     sortedWord.sort((a, b) => {
@@ -235,6 +275,14 @@ function App() {
         </tbody>
       </table>
     )
+  }
+
+  function Timer() {
+    return (
+      <div className="time">
+        {seconds}s
+      </div>
+    );
   }
 
   function LastWordDisplay() {
@@ -278,6 +326,9 @@ function App() {
             </div>
             <div className="oj-c-Table">
               <TableFormList headers={["N°", "Mot", "Score", "Pseudo"]} formElements={words}/>
+            </div>
+            <div className="timer plsChangeThisChris">
+              <Timer/>
             </div>
             <div className="oj-c-Interface-footer">
               <LastWordDisplay/>
