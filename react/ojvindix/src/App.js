@@ -226,6 +226,7 @@ function App() {
 
     if (doomMode) {
       splash.classList.add('is-active');
+      splash.classList.remove('is-regular');
       splash.classList.add('is-doom');
       document.body.classList.add('no-transition');
       splashContent[0].innerHTML = "😡";
@@ -242,6 +243,7 @@ function App() {
       }, 420);
     } else {
       splash.classList.add('is-active');
+      splash.classList.remove('is-doom');
       splash.classList.add('is-regular');
       document.body.classList.add('no-transition');
       splashContent[0].innerHTML = "😊";

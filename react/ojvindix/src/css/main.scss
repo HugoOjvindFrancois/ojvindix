@@ -42,7 +42,7 @@ $box_shadow_1: 0 3px 6px rgba(0, 0, 0, 0.16),
 0 3px 6px rgba(0, 0, 0, 0.23);
 
 $transition-regular: all .2s;
-$transition-splash: all .42s, opacity .2s;
+$transition-splash: all .42s, opacity .2s, background 0s;
 
 // =====================================================================
 // Global
@@ -209,8 +209,10 @@ body {
             line-height: 1.5;
         }
     }
-    .oj-c-Timer-time {
-        font-size: 13px;
+    .oj-c-Timer {
+        &-time {
+            font-size: 13px;
+        }
     }
     .oj-c-bottomMenu {
         border-top-left-radius: 7px;
@@ -525,6 +527,7 @@ body.s-doom {
         justify-content: center;
         transition: $transition-regular;
         box-shadow: $box_shadow_1;
+        text-align: center;
     }
     &-time {
         font-size: 18px;
@@ -640,6 +643,8 @@ body.s-doom {
             border: 0;
             width: 45px;
             height: 45px;
+            justify-content: flex-end;
+            text-align: right;
         }
     }
 }

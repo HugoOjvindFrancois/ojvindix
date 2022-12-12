@@ -432,6 +432,7 @@ body.s-doom .oj-c-Fire {
   justify-content: center;
   transition: all 0.2s;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  text-align: center;
 }
 .oj-c-Timer-time {
   font-size: 18px;
@@ -451,7 +452,7 @@ body.s-doom .oj-c-Fire {
   opacity: 0;
   transform: scale(1.2);
   pointer-events: none;
-  transition: all 0.42s, opacity 0.2s !important;
+  transition: all 0.42s, opacity 0.2s, background 0s !important;
 }
 .oj-c-Splash-inner {
   display: flex;
@@ -532,6 +533,8 @@ body.s-doom .oj-c-Fire {
     border: 0;
     width: 45px;
     height: 45px;
+    justify-content: flex-end;
+    text-align: right;
   }
 }
 @media (max-width: 550px) {
