@@ -309,6 +309,7 @@ body::after {
 .oj-c-Fire-animation {
   position: absolute;
   inset: 0;
+  width: 140%;
   background: url("./../media/doom-fire.gif");
   background-repeat: repeat-x;
   background-size: contain;
