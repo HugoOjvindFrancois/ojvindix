@@ -108,7 +108,9 @@ body {
         text-transform: uppercase;
         font-weight: 500;
         font-size: 36px;
-        margin-top: 25px;
+        //margin-top: 25px;
+        margin-top: 36px;
+        margin-bottom: 14px;
     }
 
     &-bg {
@@ -120,6 +122,9 @@ body {
         opacity: .1 !important;
         z-index: map-get($z-index, background);
         pointer-events: none;
+
+        // Provisoire le temps de fix l'affichage de l'image gagnante
+        display: none !important;
     }
 
     &-footer {
@@ -714,6 +719,7 @@ body.s-doom {
         &-title {
             font-size: 30px;
             margin-top: 28px;
+            margin-bottom: 0;
         }
     }
 
@@ -739,7 +745,7 @@ body.s-doom {
     .oj-c-Bottom {
         display: block;
         background: transparent;
-        height: 79px;
+        height: 85px;
     }
     .oj-c-Timer {
         &-inner {
@@ -755,19 +761,24 @@ body.s-doom {
         }
     }
     .oj-c-Logo {
-        top: 25px;
+        top: -3px;
+        position: absolute;
 
         &-inner {
-            top: 25px;
+            position: absolute;
+            top: 0;
             width: 35px;
             height: 35px;
         }
     }
     .oj-c-Credits {
-        top: 25px;
+        top: -3px;
+        right: 0;
+        position: absolute;
 
         &-btnContainer {
-            top: 25px;
+            position: absolute;
+            top: 0;
         }
         &-btn {
             width: 35px;

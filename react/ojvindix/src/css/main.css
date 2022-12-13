@@ -62,7 +62,8 @@ body::after {
   text-transform: uppercase;
   font-weight: 500;
   font-size: 36px;
-  margin-top: 25px;
+  margin-top: 36px;
+  margin-bottom: 14px;
 }
 .oj-c-Interface-bg {
   position: fixed;
@@ -74,6 +75,7 @@ body::after {
   opacity: 0.1 !important;
   z-index: -1;
   pointer-events: none;
+  display: none !important;
 }
 .oj-c-Interface-footer {
   margin-bottom: 25px;
@@ -587,6 +589,7 @@ body.s-doom .oj-c-Fire {
   .oj-c-Interface-title {
     font-size: 30px;
     margin-top: 28px;
+    margin-bottom: 0;
   }
   [data-tooltip]::after {
     display: none !important;
@@ -608,7 +611,7 @@ body.s-doom .oj-c-Fire {
   .oj-c-Bottom {
     display: block;
     background: transparent;
-    height: 79px;
+    height: 85px;
   }
   .oj-c-Timer-inner {
     bottom: 20px;
@@ -622,18 +625,23 @@ body.s-doom .oj-c-Fire {
     text-align: right;
   }
   .oj-c-Logo {
-    top: 25px;
+    top: -3px;
+    position: absolute;
   }
   .oj-c-Logo-inner {
-    top: 25px;
+    position: absolute;
+    top: 0;
     width: 35px;
     height: 35px;
   }
   .oj-c-Credits {
-    top: 25px;
+    top: -3px;
+    right: 0;
+    position: absolute;
   }
   .oj-c-Credits-btnContainer {
-    top: 25px;
+    position: absolute;
+    top: 0;
   }
   .oj-c-Credits-btn {
     width: 35px;
