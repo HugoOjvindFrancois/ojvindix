@@ -13,6 +13,7 @@
     "dependencies": {
         "cors": "^2.8.5",
         "express": "^4.18.2",
+        "properties-reader": "^2.2.0",
         "socket.io": "^4.5.4",
         "word2vec": "^1.1.5"
     }

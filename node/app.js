@@ -4,7 +4,11 @@ const https = require('https');
 const fs = require('fs');
 const socket = require('socket.io');
 const w2v = require('word2vec');
+const propertiesReader = require('properties-reader');
 
+const wordFilePath = "./config/word.properties";
+const secretProperties = propertiesReader("./config/secret.properties");
+const wordProperties = propertiesReader(wordFilePath);
 
 const options = {
   key: fs.readFileSync("./.cert/key.pem"),
@@ -12,7 +16,7 @@ const options = {
 }
 
 const corsOptions = {
-  origin : ['http://localhost', 'http://51.38.48.94', 'https://www.ojvindix.fr', 'https://ojvindix.fr', 'https://ojvindix.fr:3000', 'https://www.ojvindix.fr:3000'],
+  origin : ['http://localhost', 'http://localhost:3000', 'http://51.38.48.94', 'https://www.ojvindix.fr', 'https://ojvindix.fr', 'https://ojvindix.fr:3000', 'https://www.ojvindix.fr:3000'],
 }
 
 const port = 3001;
@@ -22,8 +26,8 @@ const server = https.createServer(options, app);
 
 var model;
 
-var currentWord = 'pizza';
-var lastWord = 'drogue';
+var currentWord = wordProperties.get("current");
+var lastWord = wordProperties.get("last");
 
 var group = new Map();
 
@@ -41,7 +45,7 @@ broadcastWordToTeam = function (multiplayerCode, body) {
 }
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
   res.send('Welcome to Ojvindix')
@@ -52,11 +56,39 @@ app.get('/last', (req, res) => {
 });
 
 app.post('/new', (req, res) => {
+  const reject = () => {
+    res.setHeader("www-authenticate", "Basic");
+    res.sendStatus(401);
+  };
+  const authorization = req.headers.authorization;
+  if (!authorization) {
+    return reject();
+  }
+  const [username, password] = Buffer.from(
+    authorization.replace("Basic ", ""),
+    "base64"
+  ).toString().split(":");
+  const secretUsername = secretProperties.get("username");
+  const secretPassword = secretProperties.get("password");
+  if (!(username === secretUsername && password === secretPassword)) {
+    return reject();
+  }
   console.log('New word');
   console.log(req.body);
   var newWord = req.body.value.trim().toLowerCase();
   lastWord = currentWord;
   currentWord = newWord;
+  wordProperties.set("current", currentWord);
+  wordProperties.set("last", lastWord);
+  wordProperties.save(wordFilePath, function then(err, data) {  });
+  group.forEach(socketArray => {
+    socketArray.forEach(socket => {
+      socket.emit("new-word", {
+        lastWord: lastWord
+      });
+      console.log("emit on socket");
+    })
+  });
   res.status(200).json({
     value: newWord
   });
