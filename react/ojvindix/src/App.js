@@ -219,6 +219,10 @@ function App() {
     }
   }
 
+  function openCreditsPopup() {
+    console.log('Work In Progress');
+  }
+
   function activateDoomMode() {
     doomMode = !doomMode;
     
@@ -241,7 +245,7 @@ function App() {
         document.body.classList.add('s-doom');
         interfaceTitle[0].innerHTML = "<span>DOOM</span>jvindix";
         doomStatus[0].innerHTML = "ON";
-        signature[0].innerHTML = "Made with hate by Ojvind";
+        signature[0].innerHTML = "Réalisé avec haine par Øjvind";
         doomTooltipContainer[0].setAttribute('data-tooltip', 'Abréger ma souffrance');
       }, 400);
       setTimeout(function(){
@@ -258,7 +262,7 @@ function App() {
         document.body.classList.remove('s-doom');
         interfaceTitle[0].innerHTML = "Ojvindix";
         doomStatus[0].innerHTML = "OFF";
-        signature[0].innerHTML = "Made with love by Ojvind";
+        signature[0].innerHTML = "Réalisé avec amour par Øjvind";
         doomTooltipContainer[0].setAttribute('data-tooltip', 'Activer le mode DOOM');
       }, 400);
       setTimeout(function(){
@@ -396,14 +400,27 @@ function App() {
             </div>
             <footer className="oj-c-Interface-infos">
               <div className="s-signature">
-                Made with love by Ojvind
+                Réalisé avec amour par Øjvind
               </div>
             </footer>
+          </div>
+        </div>
+        <div className="oj-c-Logo wrap">
+          <div className="oj-c-Logo-inner">
+            <svg height="500" viewBox="0 0 500 500" width="500" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="m250 0h208c23.195959 0 42 18.8040405 42 42v416c0 23.195959-18.804041 42-42 42h-208z" fill="#df4419"/><path d="m245.865793 499.966507c-136.164364-2.207697-245.865793-113.276031-245.865793-249.966507 0-138.071187 111.928813-250 250-250v500z" fill="#1b7ecf"/><path d="m206.49276 345.8 89.949916-201.231591-57.513169-13.348432-66.272206 32.279165-4.387189 55.195462v98.810754z" fill="#1b7ecf"/><path d="m301.559204 151.115724-77.205315 190.968209 33.329246 25.175434 59.517107-21.459367 10.889878-55.520034-3.013578-62.820747-7.8763-48.489171z" fill="#df4419"/><path d="m115.2 318c-35.2 0-63.2-9.666667-84-29s-31.2-47-31.2-83v-67.2c0-36 10.4-63.6666667 31.2-83s48.8-29 84-29 63.2 9.6666667 84 29 31.2 47 31.2 83v67.2c0 36-10.4 63.666667-31.2 83s-48.8 29-84 29zm0-47.2c19.733333 0 35.066667-5.733333 46-17.2s16.4-26.8 16.4-46v-70.4c0-19.2-5.466667-34.533333-16.4-46-10.933333-11.4666667-26.266667-17.2-46-17.2-19.4666667 0-34.7333333 5.7333333-45.8 17.2-11.0666667 11.466667-16.6 26.8-16.6 46v70.4c0 19.2 5.5333333 34.533333 16.6 46s26.3333333 17.2 45.8 17.2zm-52.4 78.8-33.2-13.6 138.4-336 33.2 13.6z" fill="#fff" fill-rule="nonzero" transform="translate(135 75)"/></g></svg>
           </div>
         </div>
         <div className="oj-c-Timer wrap">
           <div className="oj-c-Timer-inner">
             <Timer/>
+          </div>
+        </div>
+        <div className="oj-c-Credits wrap">
+          <div className="oj-c-Credits-btnContainer">
+            <div className="oj-c-Credits-tooltipContainer" data-tooltip="À Propos de Ojvindix" data-tooltip-position="left" onClick={openCreditsPopup}></div>
+            <button className="oj-c-Credits-btn">
+              <span className="s-help">?</span>
+            </button>
           </div>
         </div>
         <div className="oj-c-bottomMenu wrap"></div>

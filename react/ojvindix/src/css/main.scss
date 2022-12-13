@@ -225,6 +225,23 @@ body {
             }
         }
     }
+    .oj-c-Credits {
+        &-btn {
+            .s-help {
+                font-size: 18px;
+                font-weight: 400;
+                margin-top: 3px;
+            }
+        }
+        &-tooltipContainer {
+            &::after {
+                font-size: 9px !important;
+            }
+        }
+    }
+    [data-tooltip]::after {
+        border-radius: 4px !important;
+    }
 }
 
 .oj-c-Table {
@@ -437,6 +454,7 @@ body.s-doom {
     --color-accent-hover: #ad3311;
     --color_correct: #c91515;
     --color_grey: #000;
+    --radius_round: 4px;
 
     &::after {
         background: $gradient_red !important;
@@ -514,7 +532,6 @@ body.s-doom {
     z-index: map-get($z-index, medium);
     font-family: var(--font_family_base);
     font-weight: 700;
-    font-size: clamp(5px, 15px, 60px);
 
     &-inner {
         position: fixed;
@@ -580,6 +597,40 @@ body.s-doom {
 }
 
 // =====================================================================
+// Logo
+// =====================================================================
+
+.oj-c-Logo {
+    position: relative;
+    top: 25px;
+    display: flex;
+    justify-content: flex-start;
+    z-index: map-get($z-index, medium);
+    font-family: var(--font_family_base);
+    font-weight: 700;
+
+    &-inner {
+        position: fixed;
+        top: 25px;
+        background-color: transparent;
+        border: 0;
+        //border-radius: var(--radius_round);
+        border-radius: 0px;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: $transition-regular;
+
+        > svg {
+            pointer-events: none;
+            filter: drop-shadow(0 3px 6px rgb(0 0 0 / 0.23));
+        }
+    }
+}
+
+// =====================================================================
 // Bottom Menu
 // =====================================================================
 
@@ -600,9 +651,59 @@ body.s-doom {
     position: fixed;
     width: calc(100% - 25px * 2);
     bottom: 0;
-    height: 79px;
+    height: 85px;
     z-index: map-get($z-index, regular);
     pointer-events: none;
+}
+
+// =====================================================================
+// Credits
+// =====================================================================
+
+.oj-c-Credits {
+    position: relative;
+    top: 25px;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 2;
+    cursor: pointer;
+
+    &-btnContainer {
+        position: fixed;
+        top: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &-btn {
+        background: var(--color-accent);
+        border: 0;
+        border-radius: var(--radius_round);
+        width: 60px;
+        height: 60px;
+        transition: $transition-regular;
+        box-shadow: $box_shadow_1;
+        text-align: center;
+
+        .s-help {
+            display: block;
+            font-weight: 700;
+            font-family: var(--font_family_base);
+            font-size: 26px;
+            color: $color_white;
+        }
+    }
+    &-tooltipContainer {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: map-get($z-index, regular);
+
+        &::after {
+            font-size: 13px !important;
+        }
+    }
 }
 
 @media (max-width: 767px) {
@@ -618,7 +719,7 @@ body.s-doom {
         display: block;
     }
     .oj-c-Doom {
-        bottom: 15px;
+        bottom: 20px;
 
         &-btn {
             width: 45px;
@@ -637,7 +738,7 @@ body.s-doom {
     }
     .oj-c-Timer {
         &-inner {
-            bottom: 15px;
+            bottom: 20px;
             box-shadow: none;
             background: transparent;
             border-radius: 0;
@@ -646,6 +747,40 @@ body.s-doom {
             height: 45px;
             justify-content: flex-end;
             text-align: right;
+        }
+    }
+    .oj-c-Logo {
+        top: 25px;
+
+        &-inner {
+            top: 25px;
+            width: 35px;
+            height: 35px;
+        }
+    }
+    .oj-c-Credits {
+        top: 25px;
+
+        &-btnContainer {
+            top: 25px;
+        }
+        &-btn {
+            width: 35px;
+            height: 35px;
+
+            .s-help {
+                font-size: 18px;
+            }
+        }
+    }
+    .s-doom {
+        .oj-c-Credits {
+            &-btn {
+                .s-help {
+                    font-size: 13px !important;
+                    margin-top: 2px;
+                }
+            }
         }
     }
 }
@@ -771,6 +906,21 @@ body.s-doom {
             &:hover {
                 +button {
                     border-color: #a43414;
+                    transform: scale(1.075);
+                }
+            }
+
+            &:active {
+                +button {
+                    transform: scale(1);
+                }
+            }
+        }
+    }
+    .oj-c-Credits {
+        &-tooltipContainer {
+            &:hover {
+                +button {
                     transform: scale(1.075);
                 }
             }

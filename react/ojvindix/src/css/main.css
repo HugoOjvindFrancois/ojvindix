@@ -166,6 +166,17 @@ body::after {
 .s-doom .oj-c-Doom-tooltipContainer::after {
   font-size: 9px !important;
 }
+.s-doom .oj-c-Credits-btn .s-help {
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 3px;
+}
+.s-doom .oj-c-Credits-tooltipContainer::after {
+  font-size: 9px !important;
+}
+.s-doom [data-tooltip]::after {
+  border-radius: 4px !important;
+}
 
 .oj-c-Table td {
   -webkit-hyphens: auto;
@@ -367,6 +378,7 @@ body.s-doom {
   --color-accent-hover: #ad3311;
   --color_correct: #c91515;
   --color_grey: #000;
+  --radius_round: 4px;
 }
 body.s-doom::after {
   background: linear-gradient(180deg, #000 0%, #df4419 100%) !important;
@@ -419,7 +431,6 @@ body.s-doom .oj-c-Fire {
   z-index: 2;
   font-family: var(--font_family_base);
   font-weight: 700;
-  font-size: 15px;
 }
 .oj-c-Timer-inner {
   position: fixed;
@@ -477,6 +488,33 @@ body.s-doom .oj-c-Fire {
   background: #0f5c9b;
 }
 
+.oj-c-Logo {
+  position: relative;
+  top: 25px;
+  display: flex;
+  justify-content: flex-start;
+  z-index: 2;
+  font-family: var(--font_family_base);
+  font-weight: 700;
+}
+.oj-c-Logo-inner {
+  position: fixed;
+  top: 25px;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.oj-c-Logo-inner > svg {
+  pointer-events: none;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.23));
+}
+
 .oj-c-Bottom {
   display: none;
   height: 0;
@@ -493,9 +531,52 @@ body.s-doom .oj-c-Fire {
   position: fixed;
   width: calc(100% - 50px);
   bottom: 0;
-  height: 79px;
+  height: 85px;
   z-index: 1;
   pointer-events: none;
+}
+
+.oj-c-Credits {
+  position: relative;
+  top: 25px;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 2;
+  cursor: pointer;
+}
+.oj-c-Credits-btnContainer {
+  position: fixed;
+  top: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.oj-c-Credits-btn {
+  background: var(--color-accent);
+  border: 0;
+  border-radius: var(--radius_round);
+  width: 60px;
+  height: 60px;
+  transition: all 0.2s;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  text-align: center;
+}
+.oj-c-Credits-btn .s-help {
+  display: block;
+  font-weight: 700;
+  font-family: var(--font_family_base);
+  font-size: 26px;
+  color: #fff;
+}
+.oj-c-Credits-tooltipContainer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.oj-c-Credits-tooltipContainer::after {
+  font-size: 13px !important;
 }
 
 @media (max-width: 767px) {
@@ -510,7 +591,7 @@ body.s-doom .oj-c-Fire {
     display: block;
   }
   .oj-c-Doom {
-    bottom: 15px;
+    bottom: 20px;
   }
   .oj-c-Doom-btn {
     width: 45px;
@@ -526,7 +607,7 @@ body.s-doom .oj-c-Fire {
     height: 79px;
   }
   .oj-c-Timer-inner {
-    bottom: 15px;
+    bottom: 20px;
     box-shadow: none;
     background: transparent;
     border-radius: 0;
@@ -535,6 +616,31 @@ body.s-doom .oj-c-Fire {
     height: 45px;
     justify-content: flex-end;
     text-align: right;
+  }
+  .oj-c-Logo {
+    top: 25px;
+  }
+  .oj-c-Logo-inner {
+    top: 25px;
+    width: 35px;
+    height: 35px;
+  }
+  .oj-c-Credits {
+    top: 25px;
+  }
+  .oj-c-Credits-btnContainer {
+    top: 25px;
+  }
+  .oj-c-Credits-btn {
+    width: 35px;
+    height: 35px;
+  }
+  .oj-c-Credits-btn .s-help {
+    font-size: 18px;
+  }
+  .s-doom .oj-c-Credits-btn .s-help {
+    font-size: 13px !important;
+    margin-top: 2px;
   }
 }
 @media (max-width: 550px) {
@@ -642,6 +748,12 @@ body.s-doom .oj-c-Fire {
     transform: scale(1.075);
   }
   .oj-c-Doom-tooltipContainer:active + button {
+    transform: scale(1);
+  }
+  .oj-c-Credits-tooltipContainer:hover + button {
+    transform: scale(1.075);
+  }
+  .oj-c-Credits-tooltipContainer:active + button {
     transform: scale(1);
   }
 }
