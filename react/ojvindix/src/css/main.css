@@ -584,6 +584,10 @@ body.s-doom .oj-c-Fire {
     max-width: unset;
     width: 100%;
   }
+  .oj-c-Interface-title {
+    font-size: 30px;
+    margin-top: 28px;
+  }
   [data-tooltip]::after {
     display: none !important;
   }

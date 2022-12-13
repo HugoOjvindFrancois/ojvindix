@@ -710,6 +710,11 @@ body.s-doom {
     .oj-c-Interface {
         max-width: unset;
         width: 100%;
+
+        &-title {
+            font-size: 30px;
+            margin-top: 28px;
+        }
     }
 
     [data-tooltip]::after {
