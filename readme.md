@@ -1,4 +1,4 @@
-# Ojvindix
+# Øjvindix
 
 Homemade Cémantix
 

@@ -260,7 +260,7 @@ function App() {
       setTimeout(function() {
         splash.classList.remove('is-active');
         document.body.classList.remove('s-doom');
-        interfaceTitle[0].innerHTML = "Ojvindix";
+        interfaceTitle[0].innerHTML = "Øjvindix";
         doomStatus[0].innerHTML = "OFF";
         signature[0].innerHTML = "Réalisé avec amour par Øjvind";
         doomTooltipContainer[0].setAttribute('data-tooltip', 'Activer le mode DOOM');
@@ -379,7 +379,7 @@ function App() {
           </div>
           <div className="oj-c-Interface">  
             { win && (<img src={winRegular} alt="win GIF" width="100%" className="oj-c-Interface-bg" />)}      
-            <h1 className="oj-c-Interface-title">Ojvindix</h1>
+            <h1 className="oj-c-Interface-title">Øjvindix</h1>
             <div className="oj-c-Search">
               <div className="oj-c-Search-inner">
                 <input className="oj-c-Search-input oj-c-Input" type="text" placeholder="Mot" onChange={handleChanges} onKeyDown={handleKeyDown} value={message}/>
@@ -417,7 +417,7 @@ function App() {
         </div>
         <div className="oj-c-Credits wrap">
           <div className="oj-c-Credits-btnContainer">
-            <div className="oj-c-Credits-tooltipContainer" data-tooltip="À Propos de Ojvindix" data-tooltip-position="left" onClick={openCreditsPopup}></div>
+            <div className="oj-c-Credits-tooltipContainer" data-tooltip="À Propos de Øjvindix" data-tooltip-position="left" onClick={openCreditsPopup}></div>
             <button className="oj-c-Credits-btn">
               <span className="s-help">?</span>
             </button>
