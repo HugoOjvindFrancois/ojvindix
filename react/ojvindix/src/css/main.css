@@ -536,9 +536,6 @@ body.s-doom .oj-c-Fire {
     justify-content: flex-end;
     text-align: right;
   }
-  .oj-c-Multi > input:first-of-type {
-    margin-top: 0;
-  }
 }
 @media (max-width: 550px) {
   .oj-c-Multi {
@@ -550,6 +547,9 @@ body.s-doom .oj-c-Fire {
   }
   .oj-c-Multi-btn {
     margin-bottom: 0;
+  }
+  .oj-c-Multi > input:first-of-type {
+    margin-top: 0;
   }
 }
 @media (hover: hover) {

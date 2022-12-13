@@ -648,13 +648,6 @@ body.s-doom {
             text-align: right;
         }
     }
-    .oj-c-Multi {
-        > input {
-            &:first-of-type {
-                margin-top: 0;
-            }
-        }
-    }
 }
 
 @media (max-width: 550px) {
@@ -669,6 +662,11 @@ body.s-doom {
 
         &-btn {
             margin-bottom: 0;
+        }
+        > input {
+            &:first-of-type {
+                margin-top: 0;
+            }
         }
     }
 }
