@@ -8,7 +8,7 @@ import './css/vendors/reset.min.css';
 import './css/main.min.css';
 import io from 'socket.io-client';
 
-const words = [];
+var words = [];
 var multiplayer = {
   connected: false
 };
@@ -130,8 +130,14 @@ function App() {
       multiplayer.connected = true;
       setIsConnected(true);
     });
-    multiplayer.socket.on("new-word", () => {
+    multiplayer.socket.on("new-word", (body) => {
+      console.log("new-word");
       resetTimer();
+      words = [];
+      win = false;
+      sessionStorage.setItem("wordNumber", 0);
+      setCount(0);
+      setLastWord(body.lastWord);
     })
     multiplayer.socket.on('word', onBroadcastWord);
   }
@@ -247,7 +253,7 @@ function App() {
       splash.classList.add('is-regular');
       document.body.classList.add('no-transition');
       splashContent[0].innerHTML = "😊";
-      setTimeout(function(){
+      setTimeout(function() {
         splash.classList.remove('is-active');
         document.body.classList.remove('s-doom');
         interfaceTitle[0].innerHTML = "Ojvindix";
@@ -258,8 +264,6 @@ function App() {
       setTimeout(function(){
         document.body.classList.remove('no-transition');
       }, 420);
-
-      console.log(mouseEffectSquare);
 
       for (let i = 0; i < mouseEffectSquare.length; i++) {
         mouseEffectSquare[i].remove();
@@ -339,19 +343,18 @@ function App() {
       </div>
     );
   }
-
-  function LastWordDisplay() {
+  useEffect(() => {
     fetch('https://ojvindix.fr:3001/last', {
       method: 'GET', 
       mode: 'cors',
     }).then((response) => response.json()).then((data) => {
-  
       let word = data.value;
       setLastWord(word);
-  
     }).catch((err) => {
        console.log(err.message);
     });
+  }, [lastWord]);
+  function LastWordDisplay() {
     return (
       <div className="s-prevWord">Le mot précédent était : {lastWord}</div>
     )
@@ -368,11 +371,6 @@ function App() {
                 <img className="oj-c-Doom-logo" src={doomLogo} />
                 <span className="s-doomStatus">OFF</span>
               </button>
-            </div>
-          </div>
-          <div className="oj-c-Timer">
-            <div className="oj-c-Timer-inner">
-              <Timer/>
             </div>
           </div>
           <div className="oj-c-Interface">  
@@ -401,6 +399,11 @@ function App() {
                 Made with love by Ojvind
               </div>
             </footer>
+          </div>
+        </div>
+        <div className="oj-c-Timer wrap">
+          <div className="oj-c-Timer-inner">
+            <Timer/>
           </div>
         </div>
         <div className="oj-c-bottomMenu wrap"></div>
