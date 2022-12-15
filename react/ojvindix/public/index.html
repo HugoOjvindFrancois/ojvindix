@@ -20,6 +20,7 @@
     <!-- Metadata -->
     <title>Øjvindix - Trouve le mot</title>
     <meta name="description" content="Chaque jour un nouveau mot à découvrir. Joue en solo ou invite tes amis !">
+    <meta name="author" content="OjvindCorp">
     <meta property="og:title" content="Øjvindix - Trouve le mot">
     <meta property="og:site_name" content="Øjvindix">
     <meta property="og:url" content="https://ojvindix.fr">
@@ -28,7 +29,15 @@
     <meta property="og:image" content="/cover.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Øjvindix - Trouve le mot">
+    <meta name="twitter:description" content="Chaque jour un nouveau mot à découvrir. Joue en solo ou invite tes amis !">
+    <meta name="twitter:image" content="/cover.jpg">
+
+    <!-- Preloading -->
+    <link rel="preload" as="image" href="important.png">
   </head>
+
   <body class="no-transition">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
@@ -170,5 +179,75 @@
         interactionEvent = 'touchstart';
       }
     </script>
+
+    <div class="modal micromodal-slide" id="about" aria-hidden="true">
+      <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+          <header class="modal__header">
+            <h2 class="modal__title" id="modal-1-title">
+              À propos de Øjvindix
+            </h2>
+            <button class="modal__close" aria-label="Fermer" data-micromodal-close></button>
+          </header>
+          <main class="modal__content mt-0" id="modal-1-content">
+            <span class="m-title-1 mt-0">Développé par ØjvindCorp</span>
+            <p>
+              ØjvindCorp est un collectif à taille humaine composé d'une poignée de développeurs web.
+            </p>
+            <p>
+              Nous inventons des expériences digitales open-source, innovantes et originales pendant notre temps libre.
+            </p>
+            <span class="m-title-1">Informations supplémentaires</span>
+            <span class="m-title-2">Inspirations</span>
+            <p>
+              Øjvindix est inspiré du jeu <a href="https://cemantix.certitudes.org/" class="m-link" target="_blank" rel="noreferrer">Cémantix</a>.
+            </p>
+            <p>
+              Nous voulions pouvoir définir nos propres mots secrets entre amis, nous avons donc développé ce jeu. Plus tard, nous avons décidé d'y ajouter d'autres fonctionnalités, comme le mode DOOM, le timer et le mode multijoueur, qui inclut la possibilité de voir quel joueur a saisi quel mot.
+            </p>
+            <p>
+              Nous allons continuer à développer Øjvindix en y ajoutant peu à peu d'autres fonctionnalités nous semblant pertinentes.
+            </p>
+            <span class="m-title-2">Mentions</span>
+            <p>
+              Ce jeu est basé sur les données fournies en libre accès par <a href="https://fauconnier.github.io/#data" class="m-link" target="_blank" rel="noreferrer">Jean-Philippe Fauconnier</a>, chercheur en "Machine Learning" chez Apple.
+            </p>
+            <p>
+              Tous les contenus (textes, visuels, etc.) inspirés par le jeu-vidéo DOOM sont la propriété d'<a href="https://www.idsoftware.com/fr-fr" class="m-link" target="_blank" rel="noreferrer">id Software</a>, entreprise à laquelle nous ne sommes en aucun cas affilié.
+            </p>
+            <p>
+              La police <a href="https://www.dafont.com/fr/amazdoom.font" class="m-link" target="_blank" rel="noreferrer">Amazdoom</a>, utilisée pour le mode DOOM, est mise à disposition sous licence <a href="https://creativecommons.org/licenses/by-nc/3.0/" class="m-link" target="_blank" rel="noreferrer">Creative Commons : CC BY-NC 3.0</a>.
+            </p>
+            <span class="m-title-1">Soutien</span>
+            <p>
+              Si vous aimez Øjvindix, pour nous aider à couvrir les coûts liés à l'hébergement et à la maintenant du jeu, nous accepterons bientôt les donations.
+            </p>
+            <!--<p>
+              Si vous aimez Øjvindix, n'hésitez pas à nous soutenir en nous faisant parvenir de la <a href="#" class="m-link" target="_blank" rel="noreferrer">moula</a>.
+            </p>
+            <p>
+              Cela/Cette moula nous permettra de couvrir les coûts liés à l'hébergement et à la maintenance du jeu.
+            </p>-->
+            <span class="m-title-1">Contact</span>
+            <p>Des retours ? Une question ? Ou bien tout simplement envie de regarder sous le capot ?</p>
+            <a href="https://twitter.com/ojvindcorp" class="m-link solo-link" target="_blank" rel="noreferrer">Twitter - ØjvindCorp</a>
+            <a href="https://github.com/HugoOjvindFrancois/ojvindix" class="m-link" target="_blank" rel="noreferrer">GitHub - Øjvindix</a>
+            <a href="mailto:ojvindcorp@gmail.com" class="m-link solo-link" target="_blank" rel="noreferrer">ojvindcorp@gmail.com</a>
+            <span class="m-title-1">Licence</span>
+            <p>
+              Øjvindix est distribué sous licence <a href="https://github.com/HugoOjvindFrancois/ojvindix/blob/develop/LICENSE.md" class="m-link" target="_blank" rel="noreferrer">GPL-3.0</a>.
+            </p>
+            <a href="https://tinyurl.com/ojvindeasteregg" target="_blank" class="smol">
+              ( ͡° ͜ʖ ͡°)
+              <span>Click me!</span>
+            </a>
+          </main>
+          <footer class="modal__footer">
+            <!--<button class="modal__btn modal__btn-primary">-</button>-->
+            <button class="modal__btn" data-micromodal-close aria-label="Fermer">Fermer</button>
+          </footer>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

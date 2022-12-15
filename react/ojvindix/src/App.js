@@ -7,6 +7,7 @@ import ReactDOM from "react-dom";
 import './css/vendors/reset.min.css';
 import './css/main.min.css';
 import io from 'socket.io-client';
+import MicroModal from 'micromodal';
 
 var words = [];
 var multiplayer = {
@@ -18,10 +19,18 @@ var doomMode = false;
 
 document.addEventListener('DOMContentLoaded', function(event) {
   document.body.classList.remove('no-transition');
+  
 });
 
 function App() {
-
+  MicroModal.init({
+    openClass: 'is-open',
+    disableScroll: true,
+    disableFocus: true,
+    awaitOpenAnimation: true,
+    awaitCloseAnimation: true,
+    debugMode: false
+  });
   const [message, setMessage] = useState('');
   const [pseudo, setPseudo] = useState('');
   const [mutiplayerCode, setMultiplayerCode] = useState('');
@@ -219,9 +228,8 @@ function App() {
     }
   }
 
-  function openCreditsPopup() {
-    console.log('Work In Progress');
-  }
+  /*function creditsModal() {
+  }*/
 
   function activateDoomMode() {
     doomMode = !doomMode;
@@ -417,7 +425,7 @@ function App() {
         </div>
         <div className="oj-c-Credits wrap">
           <div className="oj-c-Credits-btnContainer">
-            <div className="oj-c-Credits-tooltipContainer" data-tooltip="À Propos de Øjvindix" data-tooltip-position="left" onClick={openCreditsPopup}></div>
+            <div className="oj-c-Credits-tooltipContainer" data-tooltip="À propos de Øjvindix" data-tooltip-position="left" data-micromodal-trigger="about"></div>
             <button className="oj-c-Credits-btn">
               <span className="s-help">?</span>
             </button>
