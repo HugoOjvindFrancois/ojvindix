@@ -39,11 +39,10 @@ function App() {
   const [isConnected, setIsConnected] = useState(multiplayer.connected);
   const [seconds, setSeconds] = useState(0);
   const [timerActive, setTimerActive] = useState(false);
-
-  var doomMusicState = {
+  const [isMusicPlaying, setMusicPlaying] = useState(false);
+  const [doomMusic, setDoomMusic] = useState({
     audio: new Audio(doomSong),
-    isPlaying: false,
-  };
+  });
 
   function resetTimer() {
     setSeconds(0);
@@ -54,15 +53,14 @@ function App() {
     setTimerActive(!timerActive);
   }
 
-  function playPause() {
-    let isPlaying = doomMusicState.isPlaying;
-    if (isPlaying) {
-      doomMusicState.audio.pause();
+  async function playPause() {
+    if (isMusicPlaying) {
+      await doomMusic.audio.pause();
     } else {
-      doomMusicState.audio.play();
-      doomMusicState.audio.loop = true;
+      await doomMusic.audio.play();
+      doomMusic.audio.loop = true;
     }
-    doomMusicState.isPlaying = !isPlaying;
+    setMusicPlaying(!isMusicPlaying);
   }
 
   const handleChanges = event => {
@@ -232,6 +230,9 @@ function App() {
   }*/
 
   function activateDoomMode() {
+
+    playPause();
+
     doomMode = !doomMode;
     
     const interfaceTitle = document.getElementsByClassName("oj-c-Interface-title");
@@ -248,7 +249,7 @@ function App() {
       splash.classList.add('is-doom');
       document.body.classList.add('no-transition');
       splashContent[0].innerHTML = "😡";
-      setTimeout(function(){
+      setTimeout(function() {
         splash.classList.remove('is-active');
         document.body.classList.add('s-doom');
         interfaceTitle[0].innerHTML = "<span>DOOM</span>jvindix";
@@ -256,7 +257,7 @@ function App() {
         signature[0].innerHTML = "Réalisé avec haine par Øjvind";
         doomTooltipContainer[0].setAttribute('data-tooltip', 'Abréger ma souffrance');
       }, 400);
-      setTimeout(function(){
+      setTimeout(function() {
         document.body.classList.remove('no-transition');
       }, 420);
     } else {
@@ -273,7 +274,7 @@ function App() {
         signature[0].innerHTML = "Réalisé avec amour par Øjvind";
         doomTooltipContainer[0].setAttribute('data-tooltip', 'Activer le mode DOOM');
       }, 400);
-      setTimeout(function(){
+      setTimeout(function() {
         document.body.classList.remove('no-transition');
       }, 420);
 
@@ -282,7 +283,6 @@ function App() {
       }
     }
 
-    playPause();
   }
 
   const handleKeyDown = (event) => {
@@ -355,6 +355,75 @@ function App() {
       </div>
     );
   }
+
+  function Information() {
+    return (
+      <div class="modal micromodal-slide" id="about" aria-hidden="true">
+      <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+          <header class="modal__header">
+            <h2 class="modal__title" id="modal-1-title">
+              À propos de Øjvindix
+            </h2>
+            <button class="modal__close" aria-label="Fermer" data-micromodal-close></button>
+          </header>
+          <main class="modal__content mt-0" id="modal-1-content">
+            <span class="m-title-1 mt-0">Développé par ØjvindCorp</span>
+            <p>
+              ØjvindCorp est un collectif à taille humaine composé d'une poignée de développeurs web.
+            </p>
+            <p>
+              Nous inventons des expériences digitales open-source, innovantes et originales pendant notre temps libre.
+            </p>
+            <span class="m-title-1">Informations supplémentaires</span>
+            <span class="m-title-2">Inspirations</span>
+            <p>
+              Øjvindix est inspiré du jeu <a href="https://cemantix.certitudes.org/" class="m-link" target="_blank" rel="noreferrer">Cémantix</a>.
+            </p>
+            <p>
+              Nous voulions pouvoir définir nos propres mots secrets entre amis, nous avons donc développé ce jeu. Plus tard, nous avons décidé d'y ajouter d'autres fonctionnalités, comme le mode DOOM, le timer et le mode multijoueur, qui inclut la possibilité de voir quel joueur a saisi quel mot.
+            </p>
+            <p>
+              Nous allons continuer à développer Øjvindix en y ajoutant peu à peu d'autres fonctionnalités nous semblant pertinentes.
+            </p>
+            <span class="m-title-2">Mentions</span>
+            <p>
+              Ce jeu est basé sur les données fournies en libre accès par <a href="https://fauconnier.github.io/#data" class="m-link" target="_blank" rel="noreferrer">Jean-Philippe Fauconnier</a>, chercheur en "Machine Learning" chez Apple.
+            </p>
+            <p>
+              Tous les contenus (textes, visuels, etc.) inspirés par le jeu-vidéo DOOM sont la propriété d'<a href="https://www.idsoftware.com/fr-fr" class="m-link" target="_blank" rel="noreferrer">id Software</a>, entreprise à laquelle nous ne sommes en aucun cas affilié.
+            </p>
+            <p>
+              La police <a href="https://www.dafont.com/fr/amazdoom.font" class="m-link" target="_blank" rel="noreferrer">Amazdoom</a>, utilisée pour le mode DOOM, est mise à disposition sous licence <a href="https://creativecommons.org/licenses/by-nc/3.0/" class="m-link" target="_blank" rel="noreferrer">Creative Commons : CC BY-NC 3.0</a>.
+            </p>
+            <span class="m-title-1">Soutien</span>
+            <p>
+              Si vous aimez Øjvindix, pour nous aider à couvrir les coûts liés à l'hébergement et à la maintenant du jeu, nous accepterons bientôt les donations.
+            </p>
+            <span class="m-title-1">Contact</span>
+            <p>Des retours ? Une question ? Ou bien tout simplement envie de regarder sous le capot ?</p>
+            <a href="https://twitter.com/ojvindcorp" class="m-link solo-link" target="_blank" rel="noreferrer">Twitter - ØjvindCorp</a>
+            <a href="https://github.com/HugoOjvindFrancois/ojvindix" class="m-link" target="_blank" rel="noreferrer">GitHub - Øjvindix</a>
+            <a href="mailto:ojvindcorp@gmail.com" class="m-link solo-link" target="_blank" rel="noreferrer">ojvindcorp@gmail.com</a>
+            <span class="m-title-1">Licence</span>
+            <p>
+              Øjvindix est distribué sous licence <a href="https://github.com/HugoOjvindFrancois/ojvindix/blob/develop/LICENSE.md" class="m-link" target="_blank" rel="noreferrer">GPL-3.0</a>.
+            </p>
+            <a href="https://tinyurl.com/ojvindeasteregg" target="_blank" class="smol">
+              ( ͡° ͜ʖ ͡°)
+              <span>Click me!</span>
+            </a>
+          </main>
+          <footer class="modal__footer">
+            <button class="modal__btn" data-micromodal-close aria-label="Fermer">Fermer</button>
+          </footer>
+        </div>
+      </div>
+    </div>
+    );
+  }
+
+
   useEffect(() => {
     fetch('https://ojvindix.fr:3001/last', {
       method: 'GET', 
@@ -443,6 +512,7 @@ function App() {
           </div>
         </div>
       </div>
+      <Information/>
     </div>
   );
 }
