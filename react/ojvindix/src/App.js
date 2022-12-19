@@ -359,7 +359,7 @@ function App() {
   function Information() {
     return (
       <div className="modal micromodal-slide" id="about" aria-hidden="true">
-      <div className="modal__overlay" tabindex="-1" data-micromodal-close>
+      <div className="modal__overlay" tabIndex="-1" data-micromodal-close>
         <div className="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
           <header className="modal__header">
             <h2 className="modal__title" id="modal-1-title">
@@ -391,10 +391,10 @@ function App() {
               Ce jeu est basé sur les données fournies en libre accès par <a href="https://fauconnier.github.io/#data" className="m-link" target="_blank" rel="noreferrer">Jean-Philippe Fauconnier</a>, chercheur en "Machine Learning" chez Apple.
             </p>
             <p>
-              Tous les contenus (textes, visuels, etc.) inspirés par le jeu-vidéo DOOM sont la propriété d'<a href="https://www.idsoftware.com/fr-fr" class="m-link" target="_blank" rel="noreferrer">id Software</a>, entreprise à laquelle nous ne sommes en aucun cas affilié.
+              Tous les contenus (textes, visuels, etc.) inspirés par le jeu-vidéo DOOM sont la propriété d'<a href="https://www.idsoftware.com/fr-fr" className="m-link" target="_blank" rel="noreferrer">id Software</a>, entreprise à laquelle nous ne sommes en aucun cas affilié.
             </p>
             <p>
-              La police <a href="https://www.dafont.com/fr/amazdoom.font" className="m-link" target="_blank" rel="noreferrer">Amazdoom</a>, utilisée pour le mode DOOM, est mise à disposition sous licence <a href="https://creativecommons.org/licenses/by-nc/3.0/" class="m-link" target="_blank" rel="noreferrer">Creative Commons : CC BY-NC 3.0</a>.
+              La police <a href="https://www.dafont.com/fr/amazdoom.font" className="m-link" target="_blank" rel="noreferrer">Amazdoom</a>, utilisée pour le mode DOOM, est mise à disposition sous licence <a href="https://creativecommons.org/licenses/by-nc/3.0/" className="m-link" target="_blank" rel="noreferrer">Creative Commons : CC BY-NC 3.0</a>.
             </p>
             <span className="m-title-1">Soutien</span>
             <p>
