@@ -398,7 +398,7 @@ function App() {
             </p>
             <span className="m-title-1">Soutien</span>
             <p>
-              Si vous aimez Øjvindix, pour nous aider à couvrir les coûts liés à l'hébergement et à la maintenant du jeu, nous accepterons bientôt les donations.
+              Si vous aimez Øjvindix, pour nous aider à couvrir les coûts liés à l'hébergement et à la maintenance du jeu, nous accepterons bientôt les donations.
             </p>
             <span className="m-title-1">Contact</span>
             <p>Des retours ? Une question ? Ou bien tout simplement envie de regarder sous le capot ?</p>
