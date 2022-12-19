@@ -398,8 +398,12 @@ function App() {
             </p>
             <span className="m-title-1">Soutien</span>
             <p>
-              Si vous aimez Øjvindix, pour nous aider à couvrir les coûts liés à l'hébergement et à la maintenance du jeu, nous accepterons bientôt les donations.
+              Si vous aimez Øjvindix, vous pouvez nous aider à couvrir les coûts liés à l'hébergement et à la maintenance du jeu en faisant une donation !
             </p>
+            <a href="https://www.paypal.com/donate/?hosted_button_id=L2AKXCVT6SKMN" className="s-donate" target="_blank" rel=" noreferrer" data-tooltip="Bro détecté ❤️" data-tooltip-position="right">
+              <img src="https://pics.paypal.com/00/s/NDgzMWZkZGMtZTgyNi00NjgwLWFlNGMtMjdhNzM3NmQxNTZh/file.PNG" alt="Faire un don à ØjvindCorp" />
+              <span>👀</span>
+            </a>
             <span className="m-title-1">Contact</span>
             <p>Des retours ? Une question ? Ou bien tout simplement envie de regarder sous le capot ?</p>
             <a href="https://twitter.com/ojvindcorp" className="m-link solo-link" target="_blank" rel="noreferrer">Twitter - ØjvindCorp</a>
@@ -409,7 +413,7 @@ function App() {
             <p>
               Øjvindix est distribué sous licence <a href="https://github.com/HugoOjvindFrancois/ojvindix/blob/develop/LICENSE.md" className="m-link" target="_blank" rel="noreferrer">GPL-3.0</a>.
             </p>
-            <a href="https://tinyurl.com/ojvindeasteregg" target="_blank" className="smol">
+            <a href="https://tinyurl.com/ojvindeasteregg" target="_blank" className="smol" rel="noreferrer">
               ( ͡° ͜ʖ ͡°)
               <span>Click me!</span>
             </a>
@@ -422,7 +426,6 @@ function App() {
     </div>
     );
   }
-
 
   useEffect(() => {
     fetch('https://ojvindix.fr:3001/last', {

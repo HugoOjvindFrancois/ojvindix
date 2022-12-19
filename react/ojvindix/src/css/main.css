@@ -67,6 +67,7 @@ body::after {
   text-decoration: none;
   color: var(--color_grey);
   align-items: center;
+  transform-origin: left;
 }
 .smol > span {
   line-height: 1;
@@ -756,6 +757,8 @@ body.s-doom .oj-c-Fire {
   border-width: 0;
   cursor: pointer;
   -webkit-appearance: button;
+  -moz-appearance: button;
+       appearance: button;
   text-transform: none;
   overflow: visible;
   line-height: 1.15;
@@ -883,6 +886,29 @@ body.s-doom .oj-c-Fire {
 .micromodal-slide .modal__container,
 .micromodal-slide .modal__overlay {
   will-change: transform;
+}
+
+.s-donate {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 5px;
+  transition: all 0.2s;
+  transform-origin: left;
+  border-radius: var(--radius_medium);
+  text-decoration: none;
+  font-size: 0;
+}
+.s-donate > img {
+  width: 150px;
+  height: auto;
+  border-radius: var(--radius_medium);
+}
+.s-donate > span {
+  position: absolute;
+  left: 100%;
+  margin-left: 15px;
+  font-size: 22px;
 }
 
 @media (max-width: 767px) {
@@ -1037,16 +1063,17 @@ body.s-doom .oj-c-Fire {
     top: 50%;
   }
   [data-tooltip]:hover[data-tooltip-position=left]::after {
-    transform: translate(-110%, -50%) scale(1);
+    transform: translate(-100%, -50%) scale(1);
     transform-origin: right;
     bottom: unset;
+    left: -15px;
     top: 50%;
   }
   [data-tooltip][data-tooltip-position=right]::after {
     transform: translate(0%, -50%) scale(0.9);
     transform-origin: left;
     right: 0;
-    left: 75px;
+    left: calc(100% + 15px);
     bottom: unset;
     top: 50%;
   }
@@ -1082,11 +1109,13 @@ body.s-doom .oj-c-Fire {
     transform: scale(1);
   }
   .smol:hover {
-    transform-origin: left;
     transform: scale(2);
   }
   .smol:hover > span {
     opacity: 1;
+  }
+  .s-donate:hover {
+    transform: scale(1);
   }
 }
 .container {
