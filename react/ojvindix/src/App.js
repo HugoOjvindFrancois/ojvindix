@@ -358,27 +358,27 @@ function App() {
 
   function Information() {
     return (
-      <div class="modal micromodal-slide" id="about" aria-hidden="true">
-      <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
-          <header class="modal__header">
-            <h2 class="modal__title" id="modal-1-title">
+      <div className="modal micromodal-slide" id="about" aria-hidden="true">
+      <div className="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div className="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+          <header className="modal__header">
+            <h2 className="modal__title" id="modal-1-title">
               À propos de Øjvindix
             </h2>
-            <button class="modal__close" aria-label="Fermer" data-micromodal-close></button>
+            <button className="modal__close" aria-label="Fermer" data-micromodal-close></button>
           </header>
-          <main class="modal__content mt-0" id="modal-1-content">
-            <span class="m-title-1 mt-0">Développé par ØjvindCorp</span>
+          <main className="modal__content mt-0" id="modal-1-content">
+            <span className="m-title-1 mt-0">Développé par ØjvindCorp</span>
             <p>
               ØjvindCorp est un collectif à taille humaine composé d'une poignée de développeurs web.
             </p>
             <p>
               Nous inventons des expériences digitales open-source, innovantes et originales pendant notre temps libre.
             </p>
-            <span class="m-title-1">Informations supplémentaires</span>
-            <span class="m-title-2">Inspirations</span>
+            <span className="m-title-1">Informations supplémentaires</span>
+            <span className="m-title-2">Inspirations</span>
             <p>
-              Øjvindix est inspiré du jeu <a href="https://cemantix.certitudes.org/" class="m-link" target="_blank" rel="noreferrer">Cémantix</a>.
+              Øjvindix est inspiré du jeu <a href="https://cemantix.certitudes.org/" className="m-link" target="_blank" rel="noreferrer">Cémantix</a>.
             </p>
             <p>
               Nous voulions pouvoir définir nos propres mots secrets entre amis, nous avons donc développé ce jeu. Plus tard, nous avons décidé d'y ajouter d'autres fonctionnalités, comme le mode DOOM, le timer et le mode multijoueur, qui inclut la possibilité de voir quel joueur a saisi quel mot.
@@ -386,36 +386,36 @@ function App() {
             <p>
               Nous allons continuer à développer Øjvindix en y ajoutant peu à peu d'autres fonctionnalités nous semblant pertinentes.
             </p>
-            <span class="m-title-2">Mentions</span>
+            <span className="m-title-2">Mentions</span>
             <p>
-              Ce jeu est basé sur les données fournies en libre accès par <a href="https://fauconnier.github.io/#data" class="m-link" target="_blank" rel="noreferrer">Jean-Philippe Fauconnier</a>, chercheur en "Machine Learning" chez Apple.
+              Ce jeu est basé sur les données fournies en libre accès par <a href="https://fauconnier.github.io/#data" className="m-link" target="_blank" rel="noreferrer">Jean-Philippe Fauconnier</a>, chercheur en "Machine Learning" chez Apple.
             </p>
             <p>
               Tous les contenus (textes, visuels, etc.) inspirés par le jeu-vidéo DOOM sont la propriété d'<a href="https://www.idsoftware.com/fr-fr" class="m-link" target="_blank" rel="noreferrer">id Software</a>, entreprise à laquelle nous ne sommes en aucun cas affilié.
             </p>
             <p>
-              La police <a href="https://www.dafont.com/fr/amazdoom.font" class="m-link" target="_blank" rel="noreferrer">Amazdoom</a>, utilisée pour le mode DOOM, est mise à disposition sous licence <a href="https://creativecommons.org/licenses/by-nc/3.0/" class="m-link" target="_blank" rel="noreferrer">Creative Commons : CC BY-NC 3.0</a>.
+              La police <a href="https://www.dafont.com/fr/amazdoom.font" className="m-link" target="_blank" rel="noreferrer">Amazdoom</a>, utilisée pour le mode DOOM, est mise à disposition sous licence <a href="https://creativecommons.org/licenses/by-nc/3.0/" class="m-link" target="_blank" rel="noreferrer">Creative Commons : CC BY-NC 3.0</a>.
             </p>
-            <span class="m-title-1">Soutien</span>
+            <span className="m-title-1">Soutien</span>
             <p>
               Si vous aimez Øjvindix, pour nous aider à couvrir les coûts liés à l'hébergement et à la maintenant du jeu, nous accepterons bientôt les donations.
             </p>
-            <span class="m-title-1">Contact</span>
+            <span className="m-title-1">Contact</span>
             <p>Des retours ? Une question ? Ou bien tout simplement envie de regarder sous le capot ?</p>
-            <a href="https://twitter.com/ojvindcorp" class="m-link solo-link" target="_blank" rel="noreferrer">Twitter - ØjvindCorp</a>
-            <a href="https://github.com/HugoOjvindFrancois/ojvindix" class="m-link" target="_blank" rel="noreferrer">GitHub - Øjvindix</a>
-            <a href="mailto:ojvindcorp@gmail.com" class="m-link solo-link" target="_blank" rel="noreferrer">ojvindcorp@gmail.com</a>
-            <span class="m-title-1">Licence</span>
+            <a href="https://twitter.com/ojvindcorp" className="m-link solo-link" target="_blank" rel="noreferrer">Twitter - ØjvindCorp</a>
+            <a href="https://github.com/HugoOjvindFrancois/ojvindix" className="m-link" target="_blank" rel="noreferrer">GitHub - Øjvindix</a>
+            <a href="mailto:ojvindcorp@gmail.com" className="m-link solo-link" target="_blank" rel="noreferrer">ojvindcorp@gmail.com</a>
+            <span className="m-title-1">Licence</span>
             <p>
-              Øjvindix est distribué sous licence <a href="https://github.com/HugoOjvindFrancois/ojvindix/blob/develop/LICENSE.md" class="m-link" target="_blank" rel="noreferrer">GPL-3.0</a>.
+              Øjvindix est distribué sous licence <a href="https://github.com/HugoOjvindFrancois/ojvindix/blob/develop/LICENSE.md" className="m-link" target="_blank" rel="noreferrer">GPL-3.0</a>.
             </p>
-            <a href="https://tinyurl.com/ojvindeasteregg" target="_blank" class="smol">
+            <a href="https://tinyurl.com/ojvindeasteregg" target="_blank" className="smol">
               ( ͡° ͜ʖ ͡°)
               <span>Click me!</span>
             </a>
           </main>
-          <footer class="modal__footer">
-            <button class="modal__btn" data-micromodal-close aria-label="Fermer">Fermer</button>
+          <footer className="modal__footer">
+            <button className="modal__btn" data-micromodal-close aria-label="Fermer">Fermer</button>
           </footer>
         </div>
       </div>
