@@ -7,7 +7,7 @@ import ReactDOM from "react-dom";
 import './css/vendors/reset.min.css';
 import './css/main.min.css';
 import io from 'socket.io-client';
-import MicroModal from 'micromodal';
+import MicroModal from 'react-micro-modal';
 
 var words = [];
 var multiplayer = {
@@ -23,14 +23,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
 });
 
 function App() {
-  MicroModal.init({
-    openClass: 'is-open',
-    disableScroll: true,
-    disableFocus: true,
-    awaitOpenAnimation: true,
-    awaitCloseAnimation: true,
-    debugMode: false
-  });
   const [message, setMessage] = useState('');
   const [pseudo, setPseudo] = useState('');
   const [mutiplayerCode, setMultiplayerCode] = useState('');
@@ -303,6 +295,7 @@ function App() {
     return () => clearInterval(interval);
   }, [timerActive, seconds]);
 
+
   function TableFormList(props) {
     let sortedWord = [...props.formElements];
     sortedWord.sort((a, b) => {
@@ -356,16 +349,14 @@ function App() {
     );
   }
 
-  function Information() {
+  function Information({closeFunction}) {
     return (
-      <div className="modal micromodal-slide" id="about" aria-hidden="true">
-      <div className="modal__overlay" tabIndex="-1" data-micromodal-close>
-        <div className="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+        <div role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
           <header className="modal__header">
             <h2 className="modal__title" id="modal-1-title">
               À propos de Øjvindix
             </h2>
-            <button className="modal__close" aria-label="Fermer" data-micromodal-close></button>
+            <button className="modal__close" aria-label="Fermer" onClick={closeFunction}></button>
           </header>
           <main className="modal__content mt-0" id="modal-1-content">
             <span className="m-title-1 mt-0">Développé par ØjvindCorp</span>
@@ -419,11 +410,9 @@ function App() {
             </a>
           </main>
           <footer className="modal__footer">
-            <button className="modal__btn" data-micromodal-close aria-label="Fermer">Fermer</button>
+            <button className="modal__btn" aria-label="Fermer" onClick={closeFunction}>Fermer</button>
           </footer>
         </div>
-      </div>
-    </div>
     );
   }
 
@@ -438,6 +427,8 @@ function App() {
        console.log(err.message);
     });
   }, [lastWord]);
+
+  
   function LastWordDisplay() {
     return (
       <div className="s-prevWord">Le mot précédent était : {lastWord}</div>
@@ -496,12 +487,17 @@ function App() {
           </div>
         </div>
         <div className="oj-c-Credits wrap">
-          <div className="oj-c-Credits-btnContainer">
-            <div className="oj-c-Credits-tooltipContainer" data-tooltip="À propos de Øjvindix" data-tooltip-position="left" data-micromodal-trigger="about"></div>
-            <button className="oj-c-Credits-btn">
-              <span className="s-help">?</span>
-            </button>
-          </div>
+          <MicroModal trigger={(open) => (
+            <div className="oj-c-Credits-btnContainer">
+              <div className="oj-c-Credits-tooltipContainer" data-tooltip="À propos de Øjvindix" data-tooltip-position="left">
+                <button className="oj-c-Credits-btn" onClick={open}>
+                  <span className="s-help">?</span>
+                </button>
+              </div>
+            </div>
+          )}>
+            {(close) => <Information closeFunction={close}/>}
+          </MicroModal>
         </div>
         <div className="oj-c-bottomMenu wrap"></div>
         <div className="oj-c-Fire">
@@ -515,7 +511,6 @@ function App() {
           </div>
         </div>
       </div>
-      <Information/>
     </div>
   );
 }
