@@ -1,0 +1,1 @@
+docker build -t ojvindcorp/ojvindix-front:latest .

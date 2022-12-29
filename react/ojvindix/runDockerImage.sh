@@ -1,0 +1,1 @@
+docker run -p 80:80 -it ojvindcorp/ojvindix-front:latest
