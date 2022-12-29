@@ -1,4 +1,4 @@
-### Ojvindix
+# Øjvindix
 
 This project is a simple word game built with React and nodejs. The game allows multiple players to connect and submit words. A similarity score is given based on the similarity of the word to the target word. The player wins when he finds the target word
 
