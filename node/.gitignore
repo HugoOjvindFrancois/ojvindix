@@ -135,3 +135,6 @@ dist
 
 # Config for secret
 secret.properties
+
+# Config for word
+word.properties
