@@ -9,7 +9,6 @@ import './css/main.min.css';
 import io from 'socket.io-client';
 import MicroModal from 'react-micro-modal';
 
-var words = [];
 var multiplayer = {
   connected: false
 };
@@ -32,6 +31,7 @@ function App() {
   const [seconds, setSeconds] = useState(0);
   const [timerActive, setTimerActive] = useState(false);
   const [isMusicPlaying, setMusicPlaying] = useState(false);
+  const [words, setWords] = useState([]);
   const [doomMusic, setDoomMusic] = useState({
     audio: new Audio(doomSong),
   });
@@ -105,6 +105,7 @@ function App() {
         score: body.value,
         username: body.username
       });
+      sessionStorage.setItem("words", JSON.stringify(words));
     }
   }
 
@@ -207,6 +208,7 @@ function App() {
             score: score,
             username: pseudo
           });
+          sessionStorage.setItem("words", JSON.stringify(words));
         }
 
         setMessage("");
@@ -427,6 +429,17 @@ function App() {
        console.log(err.message);
     });
   }, [lastWord]);
+
+  useEffect(() => {
+    let tmp =  JSON.parse(sessionStorage.getItem("words"));
+    if (tmp != null) {
+      tmp.forEach(item => {
+        if (!isDuplicate(item.value)) {
+          words.push(item);
+        }
+      })
+    }
+  }, [words]);
 
   
   function LastWordDisplay() {
