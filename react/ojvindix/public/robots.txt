@@ -3,4 +3,4 @@ User-agent: *
 Disallow:
 
 # Sitemap
-Sitemap: https://weeeze.com/sitemap.xml
+Sitemap: https://ojvindix.fr/sitemap.xml
