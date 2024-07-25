@@ -1,6 +1,6 @@
-# https://www.robotstxt.org/robotstxt.html
-User-agent: *
-Disallow:
+# Everybody is welcome here: slurp this site up, search engines
 
-# Sitemap
-Sitemap: https://weeeze.com/sitemap.xml
+User-agent: *
+Allow: /
+
+Sitemap: https://ojvindix.fr/sitemap.xml
